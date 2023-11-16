@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class OpeningHoursController extends AbstractController
 {
-    #[Route('/opening/hours', name: 'app_opening_hours')]
+    #[Route('/horaires', name: 'app_opening_hours')]
     public function index(): Response
     {
         return $this->render('opening_hours/index.html.twig', [
