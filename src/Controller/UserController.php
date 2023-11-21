@@ -6,13 +6,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class SecondHandCarController extends AbstractController
+class UserController extends AbstractController
 {
-    #[Route('/SecondHandCar', name: 'app_second_hand_car')]
+    #[Route('/user', name: 'app_user')]
     public function index(): Response
     {
-        return $this->render('second_hand_car/index.html.twig', [
-            'controller_name' => 'SecondHandCarController',
+        return $this->render('user/index.html.twig', [
+            'controller_name' => 'UserController',
         ]);
     }
 }
