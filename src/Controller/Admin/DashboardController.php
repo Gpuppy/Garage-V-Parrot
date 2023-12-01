@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Brand;
+use App\Entity\Contact;
 use App\Entity\Review;
 use App\Entity\SecondHandCar;
 use App\Entity\Services;
@@ -48,9 +49,12 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linkToCrud('User', 'fas fa-list', User::class);
-        //yield MenuItem::linkToCrud('The Label', 'fas fa-list',Services ::class);
-        //yield MenuItem::linkToCrud('The Label', 'fas fa-list',Review  ::class);
+        yield MenuItem::linkToCrud('User', 'fa-regular fa-user', User::class);
+        yield MenuItem::linkToCrud('Brand', 'fa-regular fa-copyright', Brand::class);
+        yield MenuItem::linkToCrud('SecondHandCar', 'fa-solid fa-car', SecondHandCar::class);
+        yield MenuItem::linkToCrud('Contact', 'fa-solid fa-car', Contact::class);
+        yield MenuItem::linkToCrud('Review', 'fa-solid fa-car', Review::class);
+        yield MenuItem::linkToCrud('Contact', 'fa-solid fa-car', Contact::class);
 
     }
 }
