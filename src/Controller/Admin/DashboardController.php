@@ -2,8 +2,10 @@
 
 namespace App\Controller\Admin;
 
+use App\Controller\OpeningHoursController;
 use App\Entity\Brand;
 use App\Entity\Contact;
+use App\Entity\OpeningHours;
 use App\Entity\Review;
 use App\Entity\SecondHandCar;
 use App\Entity\Services;
@@ -50,11 +52,12 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('User', 'fa-regular fa-user', User::class);
+        yield MenuItem::linkToCrud('Services', 'fa fa-briefcase', Services::class);
         yield MenuItem::linkToCrud('Brand', 'fa-regular fa-copyright', Brand::class);
         yield MenuItem::linkToCrud('SecondHandCar', 'fa-solid fa-car', SecondHandCar::class);
-        yield MenuItem::linkToCrud('Contact', 'fa-solid fa-car', Contact::class);
-        yield MenuItem::linkToCrud('Review', 'fa-solid fa-car', Review::class);
-        yield MenuItem::linkToCrud('Contact', 'fa-solid fa-car', Contact::class);
+        yield MenuItem::linkToCrud('Contact', 'fa fa-phone', Contact::class);
+        yield MenuItem::linkToCrud('Review', 'fa fa-quote-right', Review::class);
+        yield MenuItem::linkToCrud('OpeningHours', 'fa-solid fa-car', OpeningHours::class);
 
     }
 }

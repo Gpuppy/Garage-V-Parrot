@@ -8,8 +8,10 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+
 
 class UserCrudController extends AbstractCrudController
 {
@@ -22,7 +24,8 @@ class UserCrudController extends AbstractCrudController
     {
         return $crud
             ->setEntityLabelInPlural('User')
-            ->setEntityLabelInSingular('User');
+            ->setEntityLabelInSingular('User')
+            ->setEntityPermission('ROLE_SUPER_ADMIN');
 
             //->setPageTitle('');
             //->setPaginatorPageSize('10');
@@ -32,11 +35,13 @@ class UserCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
+            IdField::new('id')->hideOnForm(),
             TextField::new('email'),
+            TextField::new('password'),
             //TextEditorField::new('description'),
             ArrayField::new('roles'),
             //DateTimeField::new('createdAt')
+
         ];
     }
 
