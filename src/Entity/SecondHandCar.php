@@ -5,9 +5,9 @@ namespace App\Entity;
 use App\Repository\SecondHandCarRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-/*use Symfony\Component\HttpFoundation\File\File;*/
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\DomCrawler\Image;
-use Vich\UploaderBundle\Entity\File;
+/*use Vich\UploaderBundle\Entity\File;*/
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 
@@ -36,16 +36,13 @@ class SecondHandCar
     #[ORM\JoinColumn(nullable: false)]
     private ?Brand $brand = null;
 
-    ##[ORM\Column]
-    /*private ?Image $image = null;*/
-
      // NOTE: This is not a mapped field of entity metadata, just a simple property.
-    #[Vich\UploadableField(mapping: 'SecondHandCars', fileNameProperty: 'imageName'/*, size: 'imageSize'*/)]
+    #[Vich\UploadableField(mapping: 'cars', fileNameProperty: 'image'/*, size: 'imageSize'*/)]
     private ?File $imageFile = null;
 
 
-    #[ORM\Column(nullable: true)]
-    private ?string $imageName = null;
+    ##[ORM\Column(nullable: true)]
+    #private ?string $imageName = null;
 
     ##[ORM\Column(nullable: true)]
     ##private ?int $imageSize = null;
@@ -55,7 +52,10 @@ class SecondHandCar
     #[ORM\Column(type: Types::DATETIME_MUTABLE,nullable: true)]
     private ?\DateTimeInterface $updatedAt = null;
 
-    /*public function getImage(): ?string
+    #[ORM\Column(length: 255)]
+    private ?string $image = null;
+
+    public function getImage(): ?string
     {
         return $this->image;
     }
@@ -65,7 +65,8 @@ class SecondHandCar
         $this->image = $image;
 
         return $this;
-    }*/
+    }
+
     /**
      * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
      * of 'UploadedFile' is injected into this setter to trigger the update. If this
@@ -90,7 +91,7 @@ class SecondHandCar
     }
 
 
-    public function setImageName(?string $imageName): self
+    /*public function setImageName(?string $imageName): self
     {
         $this->imageName = $imageName;
 
@@ -192,7 +193,7 @@ class SecondHandCar
         return $this;
     }
 
-    public function getUpdatedAt(): ?\DateTimeImmutable
+    public function getUpdatedAt(): \DateTimeInterface
     {
         return $this->updatedAt;
     }

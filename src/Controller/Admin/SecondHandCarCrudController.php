@@ -33,15 +33,21 @@ class SecondHandCarCrudController extends AbstractCrudController
             NumberField::new('km'),
             DateTimeField::new('year'),
             MoneyField::new('price')->setCurrency('EUR'),
-            TextField::new('imageFile')->setFormType(VichImageType::class)->onlyWhenCreating(),
-            ImageField::new('imageFile')->setUploadDir('/public/images/cars'),
+            TextareaField::new('imageFile')->setFormType(VichImageType::class)->onlyWhenCreating(),
+            ImageField::new('images')->setBasePath('/assets/public/images/uploads')->onlyOnIndex(),
 
+            /*ImageField::new('image')->setUploadDir('/'),*/
+
+
+
+            /*TextField::new('imageName')->onlyOnIndex(),*/
+
+            /*ImageField::new('image')->set'/'),*/
             /*ImageField::new('public/images/cars')->setBasePath('cars'),*/
-            /*TextField::new('imageName')->hideOnForm(),*/
             /*TextField::new('imageFile')->setFormType(VichImageType::class)->onlyWhenCreating(),*/
             /*TextField::new('imageFile')->setFormType(VichImageType::class)->onlyWhenCreating(),*/
             /*TextField::new('File', "Car Image")->setFormType(VichImageType::class),*/
-            /*ImageField::new('image')->setBasePath('images/cars')->onlyOnIndex(),*/
+
             DateField::new('createdAt'),
             DateField::new('updatedAt')
         ];

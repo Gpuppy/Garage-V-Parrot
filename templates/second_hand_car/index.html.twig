@@ -17,4 +17,12 @@
         <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/garage_automobile/templates/second_hand_car/index.html.twig'|file_link(0) }}">templates/second_hand_car/index.html.twig</a></code></li>
     </ul>
 </div>
+
+{% for vinyl in vinyls %}
+<div class="col pb-2 pb-sm-3">
+    <div class = "card-hover position-relative bg-secondary rounded-1 p-3 mb-4">
+        <img src="{{ vich_uploader_asset(car, 'imageFile') }}" width ="400" height = "400" alt="{{ car.image }}">
+    </div>
+</div>
+{% endfor %}
 {% endblock %}
