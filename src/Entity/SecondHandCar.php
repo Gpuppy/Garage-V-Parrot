@@ -6,7 +6,6 @@ use App\Repository\SecondHandCarRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
-use Symfony\Component\DomCrawler\Image;
 /*use Vich\UploaderBundle\Entity\File;*/
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
@@ -37,9 +36,11 @@ class SecondHandCar
     private ?Brand $brand = null;
 
      // NOTE: This is not a mapped field of entity metadata, just a simple property.
-    #[Vich\UploadableField(mapping: 'cars', fileNameProperty: 'image'/*, size: 'imageSize'*/)]
+    #[Vich\UploadableField(mapping: 'secondHandCars', fileNameProperty: 'image'/*, size: 'imageSize'*/)]
     private ?File $imageFile = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $image = null;
 
     ##[ORM\Column(nullable: true)]
     #private ?string $imageName = null;
@@ -52,8 +53,7 @@ class SecondHandCar
     #[ORM\Column(type: Types::DATETIME_MUTABLE,nullable: true)]
     private ?\DateTimeInterface $updatedAt = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $image = null;
+
 
     public function getImage(): ?string
     {

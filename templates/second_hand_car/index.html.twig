@@ -8,21 +8,25 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/xampp/htdocs/garage_automobile/src/Controller/SecondHandCarController.php'|file_link(0) }}">src/Controller/SecondHandCarController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/garage_automobile/templates/second_hand_car/index.html.twig'|file_link(0) }}">templates/second_hand_car/index.html.twig</a></code></li>
-    </ul>
-</div>
-
-{% for vinyl in vinyls %}
+{% for SecondHandCar in SecondHandCars %}
 <div class="col pb-2 pb-sm-3">
     <div class = "card-hover position-relative bg-secondary rounded-1 p-3 mb-4">
-        <img src="{{ vich_uploader_asset(car, 'imageFile') }}" width ="400" height = "400" alt="{{ car.image }}">
+        <img src="{{ vich_uploader_asset(SecondHandCar, 'imageFile') }}" width ="200" height = "200" alt="{{ SecondHandCar.image }}">
+
+
+<h1>{{ SecondHandCar.name }}</h1>
+        <h2>{{ SecondHandCar.brand }}</h2>
+        <h3>{{ SecondHandCar.km }}</h3>
+        <h4>{{ SecondHandCar.price }}</h4>
+        <h5>{{SecondHandCar.year()|date('d-m-Y')}} </h5>
+        <div class = "d-flex mb-1">
+
+        </div>
     </div>
 </div>
-{% endfor %}
+        {% endfor %}
+
+
+
+
 {% endblock %}

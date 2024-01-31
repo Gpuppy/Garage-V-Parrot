@@ -54,11 +54,11 @@ class Brand
     }
 
 
-    public function addSecondHandCar(self $secondHandCar): self
+    public function addSecondHandCar(SecondHandCar $secondHandCar): self
     {
         if (!$this->SecondHandCar->contains($secondHandCar)) {
             $this->SecondHandCar->add($secondHandCar);
-            $secondHandCar->setSecondHandCar($this);
+            $secondHandCar->setBrand($this);
         }
 
         return $this;
@@ -68,11 +68,14 @@ class Brand
     {
         if ($this->SecondHandCar->removeElement($secondHandCar)) {
             // set the owning side to null (unless already changed)
-            if ($secondHandCar->getSecondHandCar() === $this) {
-                $secondHandCar->setSecondHandCar(null);
+            if ($secondHandCar->getBrand() === $this) {
+                $secondHandCar->setBrand(null);
             }
         }
 
         return $this;
     }
+
+
+
 }

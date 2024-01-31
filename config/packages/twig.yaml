@@ -4,3 +4,6 @@ twig:
 when@test:
     twig:
         strict_variables: true
+easy_admin:
+    design:
+        form_theme: 'admin/easy/form/main_theme.html.twig'

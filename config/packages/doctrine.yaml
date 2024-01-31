@@ -9,6 +9,8 @@ doctrine:
         auto_generate_proxy_classes: true
         naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
         auto_mapping: true
+        enable_lazy_ghost_objects: true
+        report_fields_where_declared: true
         mappings:
             App:
                 is_bundle: false
@@ -20,11 +22,21 @@ when@test:
     doctrine:
         dbal:
             # "TEST_TOKEN" is typically set by ParaTest
-            dbname_suffix: '_test%env(default::TEST_TOKEN)%'
+            #dbname_suffix: '_test%env(default::TEST_TOKEN)%'
+                # configure these for your database server
+                # use postgresql for PostgreSQL
+                # use sqlite for SQLite
+                driver: 'mysql'
+                #ci-dessous 2 lignes de version de serveur en fonction du serveur local ou du serveur de prod
+                # server_version: '10.5.21-MariaDB'
+                server_version: '10.4.28-MariaDB'
 
 when@prod:
     doctrine:
         orm:
+            metadata_cache_driver:
+                type: pool
+                pool: doctrine.system_cache_pool
             auto_generate_proxy_classes: false
             proxy_dir: '%kernel.build_dir%/doctrine/orm/Proxies'
             query_cache_driver:
@@ -41,4 +53,5 @@ when@prod:
                     adapter: cache.app
                 doctrine.system_cache_pool:
                     adapter: cache.system
+
 
