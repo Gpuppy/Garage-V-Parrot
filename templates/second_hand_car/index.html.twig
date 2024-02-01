@@ -11,10 +11,10 @@
 {% for SecondHandCar in SecondHandCars %}
 <div class="col pb-2 pb-sm-3">
     <div class = "card-hover position-relative bg-secondary rounded-1 p-3 mb-4">
-        <img src="{{ vich_uploader_asset(SecondHandCar, 'imageFile') }}" width ="200" height = "200" alt="{{ SecondHandCar.image }}">
-
+        <img src="{{ vich_uploader_asset(SecondHandCar, 'imageFile','App\\Entity\\SecondHandCar') }}" width ="200" height = "200"  alt="{{ SecondHandCar.image }}">
 
 <h1>{{ SecondHandCar.name }}</h1>
+
         <h2>{{ SecondHandCar.brand }}</h2>
         <h3>{{ SecondHandCar.km }}</h3>
         <h4>{{ SecondHandCar.price }}</h4>
@@ -24,8 +24,8 @@
         </div>
     </div>
 </div>
-        {% endfor %}
 
+        {% endfor %}
 
 
 

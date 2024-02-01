@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\SecondHandCarRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
@@ -52,7 +53,6 @@ class SecondHandCar
     private ?\DateTimeInterface $createdAt = null;
     #[ORM\Column(type: Types::DATETIME_MUTABLE,nullable: true)]
     private ?\DateTimeInterface $updatedAt = null;
-
 
 
     public function getImage(): ?string
@@ -204,7 +204,6 @@ class SecondHandCar
 
         return $this;
     }
-
 
 }
 
