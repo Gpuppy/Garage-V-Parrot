@@ -3,30 +3,28 @@
 {% block title %}Hello SecondHandCarController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<div class="px-4 py-1 my-3 text-center">
+    <h1 class="display-5 fw-bold text-body-emphasis">Voitures d'occasion ✅</h1>
+</div>
+
+<div class = "row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
 
 {% for SecondHandCar in SecondHandCars %}
 <div class="col pb-2 pb-sm-3">
-    <div class = "card-hover position-relative bg-secondary rounded-1 p-3 mb-4">
-        <img src="{{ vich_uploader_asset(SecondHandCar, 'imageFile','App\\Entity\\SecondHandCar') }}" width ="200" height = "200"  alt="{{ SecondHandCar.image }}">
+    <div class = "card-hover position-relative bg-light rounded-1 p-3 mb-4">
+        <img src="{{ vich_uploader_asset(SecondHandCar, 'imageFile') }}" width ="300" height = "300"  alt="{{ SecondHandCar.image }}">
 
-<h1>{{ SecondHandCar.name }}</h1>
-
+        <h1>{{ SecondHandCar.name }}</h1>
         <h2>{{ SecondHandCar.brand }}</h2>
         <h3>{{ SecondHandCar.km }}</h3>
         <h4>{{ SecondHandCar.price }}</h4>
         <h5>{{SecondHandCar.year()|date('d-m-Y')}} </h5>
-        <div class = "d-flex mb-1">
+
 
         </div>
     </div>
-</div>
-
-        {% endfor %}
-
+    </div>
+{% endfor %}
 
 
 {% endblock %}
