@@ -7,14 +7,30 @@
     <h1 class="display-5 fw-bold text-body-emphasis">Voitures d'occasion ✅</h1>
 </div>
 
-<div class = "row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+
 
 {% for SecondHandCar in SecondHandCars %}
-<div class="col pb-2 pb-sm-3">
-    <div class = "card-hover position-relative bg-light rounded-1 p-3 mb-4">
-        <img src="{{ vich_uploader_asset(SecondHandCar, 'imageFile') }}" width ="300" height = "300"  alt="{{ SecondHandCar.image }}">
+     <div class = "container row row-cols-3 text-center">
+    <div class = " card-hover position-relative bg-light rounded-1 p-3 mb-4">
 
+    <!--div class="container text-center">
+        <div class="row">
+            <div class="col">
+                Column
+            </div>
+            <div class="col">
+                Column
+            </div>
+            <div class="col">
+                Column
+            </div>
+        </div>
+    </div-->
+
+        <img src="{{ vich_uploader_asset(SecondHandCar, 'imageFile') }}" width ="300" height = "300"  alt="{{ SecondHandCar.image }}">
+        <!--div class = "d-flex mb-1"-->
         <h1>{{ SecondHandCar.name }}</h1>
+        <!--/div-->
         <h2>{{ SecondHandCar.brand }}</h2>
         <h3>{{ SecondHandCar.km }}</h3>
         <h4>{{ SecondHandCar.price }}</h4>
@@ -22,9 +38,28 @@
 
 
         </div>
+
+
     </div>
+
     </div>
+
+    <!--div class="container text-center">
+        <div class="row">
+            <div class="col">
+                Column
+            </div>
+            <div class="col">
+                Column
+            </div>
+            <div class="col">
+                Column
+            </div>
+        </div>
+    </div-->
 {% endfor %}
+
+
 
 
 {% endblock %}
