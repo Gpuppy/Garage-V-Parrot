@@ -14,13 +14,13 @@
 
         <img src="{{ vich_uploader_asset(SecondHandCar, 'imageFile') }}" width ="300" height = "300"  alt="{{ SecondHandCar.image }}">
 
-        <h1>{{ SecondHandCar.name }}</h1>
+        <h2>{{ SecondHandCar.name }}</h2>
         <!--/div-->
-        <h2>{{ SecondHandCar.brand }}</h2>
-        <h3>{{ SecondHandCar.km }}</h3>
-        <h4>{{ SecondHandCar.price }}</h4>
-        <h5>{{SecondHandCar.year()|date('d-m-Y')}} </h5>
-        <button type="">Plus de détails</button>
+        <h3>{{ SecondHandCar.brand }}</h3>
+        <h4>{{ SecondHandCar.km }}</h4>
+        <h5>{{ SecondHandCar.price }}</h5>
+        <h6>{{SecondHandCar.year()|date('d-m-Y')}} </h6>
+        <button type="button" class="btn btn-danger">Plus de détails</button>
 
 
         </div>
