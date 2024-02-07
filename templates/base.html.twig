@@ -55,8 +55,11 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
-
+        {% block body %}
+            {# { render_esi(path('ch_cookie_consent.show')) } #}
+            {# { render_esi(path('ch_cookie_consent.show_if_cookie_consent_not_set')) } #}
+        {% endblock %}
+    </body>
         <!----footer----->
         <footer class="bg-dark text-white pt-5 pb-4 mt-0! mh-25 ">
 
