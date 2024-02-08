@@ -37,17 +37,14 @@ class SecondHandCar
     private ?Brand $brand = null;
 
      // NOTE: This is not a mapped field of entity metadata, just a simple property.
-    #[Vich\UploadableField(mapping: 'secondHandCars', fileNameProperty: 'image'/*, size: 'imageSize'*/)]
+    #[Vich\UploadableField(mapping: 'secondHandCars', fileNameProperty: 'image')]
     private ?File $imageFile = null;
 
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
-    ##[ORM\Column(nullable: true)]
-    #private ?string $imageName = null;
-
-    ##[ORM\Column(nullable: true)]
-    ##private ?int $imageSize = null;
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $description = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $createdAt = null;
@@ -203,6 +200,18 @@ class SecondHandCar
         $this->updatedAt = $updatedAt;
 
         return $this;
+    }
+
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+
+    public function setDescription(?string $description): void
+    {
+        $this->description = $description;
     }
 
 }
