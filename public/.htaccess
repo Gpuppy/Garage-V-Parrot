@@ -61,6 +61,10 @@ DirectoryIndex index.php
 
 <IfModule !mod_rewrite.c>
     <IfModule mod_alias.c>
+        RewriteEngine on
+        RewriteCond %{HTTPS} !=on
+        RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
+        RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
         # When mod_rewrite is not available, we instruct a temporary redirect of
         # the start page to the front controller explicitly so that the website
         # and the generated links can still be used.
