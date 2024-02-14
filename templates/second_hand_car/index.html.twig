@@ -20,7 +20,30 @@
         <h4>{{ SecondHandCar.km }}</h4>
         <h5>{{ SecondHandCar.price }}</h5>
         <h6>{{SecondHandCar.year()|date('d-m-Y')}} </h6>
-        <button type="button" class="btn btn-danger">Plus de détails</button>
+        <!--button type="button" class="btn btn-danger" data-toggle="modal" >Plus de détails</button-->
+        <!--div {# {{ stimulus_controller('hello') }}#} ></div-->
+        <!--button type="button" data-toggle="modal" data-target="#myModal">Launch modal</button-->
+        <!--div data-controller ="modal" >
+            <button class= "btn btn-danger btn-sm"
+                    data-action="modal-form#openModal"
+                    >Plus de détails</button-->
+
+        <div {{ stimulus_controller('hello') }}>
+            <button class= "btn btn-danger btn-sm"
+                    data-toggle="modal"
+                    data-action="modal#openModal">Plus de détails</button>
+                     </div>
+
+        <!-- would render -->
+
+
+        <div data-controller="hello">
+
+
+
+
+        </div>
+
 
 
         </div>
