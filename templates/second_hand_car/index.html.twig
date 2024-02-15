@@ -20,29 +20,37 @@
         <h4>{{ SecondHandCar.km }}</h4>
         <h5>{{ SecondHandCar.price }}</h5>
         <h6>{{SecondHandCar.year()|date('d-m-Y')}} </h6>
-        <!--button type="button" class="btn btn-danger" data-toggle="modal" >Plus de détails</button-->
-        <!--div {# {{ stimulus_controller('hello') }}#} ></div-->
-        <!--button type="button" data-toggle="modal" data-target="#myModal">Launch modal</button-->
-        <!--div data-controller ="modal" >
-            <button class= "btn btn-danger btn-sm"
-                    data-action="modal-form#openModal"
-                    >Plus de détails</button-->
 
-        <div {{ stimulus_controller('hello') }}>
-            <button class= "btn btn-danger btn-sm"
-                    data-toggle="modal"
-                    data-action="modal#openModal">Plus de détails</button>
-                     </div>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#Modal">
+            Plus de détails
+        </button>
 
-        <!-- would render -->
+        <!-- Modal -->
+        <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="ModalLabel">Description</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center bg-secondary text-white">
+                        {{ SecondHandCar.description }}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
-
-        <div data-controller="hello">
-
-
-
-
+                    </div>
+                </div>
+            </div>
         </div>
+
+
+
+<div>
+
+
+                     </div>
 
 
 
@@ -58,3 +66,4 @@
 
 
 {% endblock %}
+
