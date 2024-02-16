@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ec4c5a8fdb302453a39a83977ea4d527",
+    "content-hash": "0561bb510d83d85ba2da08ec8b00b171",
     "packages": [
         {
             "name": "doctrine/cache",
@@ -278,16 +278,16 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "3.8.1",
+            "version": "3.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "c9ea252cdce4da324ede3d6c5913dd89f769afd2"
+                "reference": "a19a1d05ca211f41089dffcc387733a6875196cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/c9ea252cdce4da324ede3d6c5913dd89f769afd2",
-                "reference": "c9ea252cdce4da324ede3d6c5913dd89f769afd2",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/a19a1d05ca211f41089dffcc387733a6875196cb",
+                "reference": "a19a1d05ca211f41089dffcc387733a6875196cb",
                 "shasum": ""
             },
             "require": {
@@ -371,7 +371,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/dbal/issues",
-                "source": "https://github.com/doctrine/dbal/tree/3.8.1"
+                "source": "https://github.com/doctrine/dbal/tree/3.8.2"
             },
             "funding": [
                 {
@@ -387,7 +387,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-02-03T17:33:49+00:00"
+            "time": "2024-02-12T18:36:36+00:00"
         },
         {
             "name": "doctrine/deprecations",
@@ -5676,6 +5676,72 @@
             "time": "2024-01-23T14:51:35+00:00"
         },
         {
+            "name": "symfony/requirements-checker",
+            "version": "v2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/requirements-checker.git",
+                "reference": "cf8893f384348a338157d637e170fe8fb2356016"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/requirements-checker/zipball/cf8893f384348a338157d637e170fe8fb2356016",
+                "reference": "cf8893f384348a338157d637e170fe8fb2356016",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.9"
+            },
+            "bin": [
+                "bin/requirements-checker"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Requirements\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Check Symfony requirements and give recommendations",
+            "keywords": [
+                "configuration",
+                "distribution"
+            ],
+            "support": {
+                "issues": "https://github.com/symfony/requirements-checker/issues",
+                "source": "https://github.com/symfony/requirements-checker/tree/v2.0.1"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2021-11-30T16:18:33+00:00"
+        },
+        {
             "name": "symfony/routing",
             "version": "v6.4.3",
             "source": {
@@ -7828,16 +7894,16 @@
         },
         {
             "name": "vich/uploader-bundle",
-            "version": "2.3.0",
+            "version": "2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dustin10/VichUploaderBundle.git",
-                "reference": "0d748cfe676bcf894b3f324f69797c9b9d124aa5"
+                "reference": "f21f620502fdee511b090e3bbbc4c724ecb4f977"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/0d748cfe676bcf894b3f324f69797c9b9d124aa5",
-                "reference": "0d748cfe676bcf894b3f324f69797c9b9d124aa5",
+                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/f21f620502fdee511b090e3bbbc4c724ecb4f977",
+                "reference": "f21f620502fdee511b090e3bbbc4c724ecb4f977",
                 "shasum": ""
             },
             "require": {
@@ -7866,12 +7932,12 @@
                 "doctrine/orm": "^2.13",
                 "ext-sqlite3": "*",
                 "knplabs/knp-gaufrette-bundle": "dev-master",
-                "league/flysystem-bundle": "^2.3",
-                "league/flysystem-memory": "^2.0",
-                "matthiasnoback/symfony-dependency-injection-test": "^4.3",
+                "league/flysystem-bundle": "^2.4 || ^3.0",
+                "league/flysystem-memory": "^2.0 || ^3.0",
+                "matthiasnoback/symfony-dependency-injection-test": "^5.1",
                 "mikey179/vfsstream": "^1.6.11",
                 "phpunit/phpunit": "^9.6",
-                "symfony/asset": "^5.4 || ^6.0",
+                "symfony/asset": "^5.4 || ^6.0 || ^7.0",
                 "symfony/browser-kit": "^5.4 || ^6.0 || ^7.0",
                 "symfony/css-selector": "^5.4 || ^6.0 || ^7.0",
                 "symfony/doctrine-bridge": "^5.4 || ^6.0 || ^7.0",
@@ -7931,9 +7997,9 @@
             ],
             "support": {
                 "issues": "https://github.com/dustin10/VichUploaderBundle/issues",
-                "source": "https://github.com/dustin10/VichUploaderBundle/tree/2.3.0"
+                "source": "https://github.com/dustin10/VichUploaderBundle/tree/2.3.1"
             },
-            "time": "2023-12-18T07:49:22+00:00"
+            "time": "2024-02-12T08:29:16+00:00"
         },
         {
             "name": "webmozart/assert",
