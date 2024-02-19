@@ -1,25 +1,29 @@
 {% extends 'base.html.twig' %}
 
+
 {% block title %}Hello HomeController!{% endblock %}
 
+
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <div class="px-4 py-1 my-3 text-center">
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+        <h1>Bienvenue dans votre garage ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/xampp/htdocs/garage_automobile/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/garage_automobile/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
+        <h3>Nos Service</h3>
+        <img src = "images/" alt="">
+     <h3>Réparation</h3>
+        <img src = "images/" alt="">
+
+        <table class="table table-dark table-hover">
+
+
+        <a href="./SecondHandCar"class="stretched-link"><h3>Vente de voiture d'occasion</h3>
+        <div class = "row row-cols-1 row-cols-sm-2 row-cols-md-3 g-6 justify-content-center">
+            <img src = "images/uploads/ClassicMercedesBenz.jpeg" class="img-responsive" style="max-width:25%"  alt="Responsive image">
+            <img src = "images/uploads/audiquattro-65c277dc14679480801872.jpeg" class="img-responsive" style="max-width:25%"  alt="Responsive image">
+            <img src = "images/uploads/ford-65ba1f24d3f17916448464.webp" class="img-responsive" style="max-width:25%"  alt="Responsive image">
+
+        </div>  </a>
+        </table>
 </div>
-
-    {# {% for service in services %} #}
-    {# {% endfor %} #}
-
-  {# var_dump() #}
 {% endblock %}
