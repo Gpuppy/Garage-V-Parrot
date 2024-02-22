@@ -2,6 +2,11 @@
 flysystem:
     storages:
         default.storage:
-            adapter: 'local'
+            adapter: 'aws'
+            # visibility: public # Make the uploaded file publicly accessible in S3
             options:
-                directory: '%kernel.project_dir%/public/images/uploads'
+                client: 'aws_client_service' # The service ID of the Aws\S3\S3Client instance
+                bucket: 'vparrot-aws'
+                prefix: 'optional/path/prefix'
+                streamReads: true
+                #directory: '%kernel.project_dir%/public/images/uploads'
