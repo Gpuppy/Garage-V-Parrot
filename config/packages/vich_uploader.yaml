@@ -1,6 +1,6 @@
 vich_uploader:
     db_driver: orm
-    ##storage: flysystem
+    storage: flysystem
 
     metadata:
         type: attribute
@@ -9,7 +9,8 @@ vich_uploader:
            secondHandCars:
             uri_prefix: '\images\uploads'
             upload_destination: default.storage
-            #upload_destination:'%kernel.project_dir%\public\images\uploads'
+            #upload_destination: '%kernel.project_dir%\public\images\uploads'
+
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
 
             inject_on_load: false

@@ -9,5 +9,6 @@ flysystem:
                 #bucket: '%env(AWS_S3_BUCKET_NAME)%'
                 #prefix: 'optional/path/prefix'
                 #streamReads: true
-                directory: '%kernel.project_dir%/var/storage/default'
-                #'%kernel.project_dir%/public/images/uploads'
+                directory: '%kernel.project_dir%/public/images/uploads'
+                #'%kernel.project_dir%/var/storage/default'
+
