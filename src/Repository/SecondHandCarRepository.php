@@ -45,4 +45,10 @@ class SecondHandCarRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+//return SecondHandCars[]
+/*public function findSearch()
+{
+    return $this->findAll();
+}*/
 }

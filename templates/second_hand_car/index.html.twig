@@ -3,6 +3,15 @@
 {% block title %}Hello SecondHandCarController!{% endblock %}
 
 {% block body %}
+
+    <!---search bar--->
+    <div class="row">
+    <!--form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+        <input type="search" class="form-control" placeholder="Search..." aria-label="Search"-->
+        {% include 'second_hand_car/_filter.html.twig' with {form: form} only %}
+    <!--/form-->
+    </div>
+
 <div class="px-4 py-1 my-3 text-center">
     <h1 class="display-5 fw-bold text-body-emphasis">Voitures d'occasion ✅</h1>
 </div>
