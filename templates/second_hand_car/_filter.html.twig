@@ -1,3 +1,38 @@
-{{ form_start(form) }}
+{{ form_start(form, {attr: {class:'filter'}}) }}
+{{ form_row(form.q) }}
 
+<h4>Brand</h4>
+{{ form_row(form.brands) }}
+
+<h4>Prix</h4>
+<div class = "row">
+    <div class ="col-md-6">
+{{ form_row(form.min) }}
+    </div>
+    <div class="cold-md-6">
+        {{ form_row(form.max) }}
+        </div>
+</div>
+
+<h4>Km</h4>
+<div class = "row">
+    <div class ="col-md-6">
+        {{ form_row(form.km) }}
+    </div>
+    <!--div class="cold-md-6">
+        {# { form_row(form.km) }} #}
+    </div-->
+</div>
+
+<h4>Année</h4>
+<div class = "row">
+    <div class ="col-md-6">
+        {{ form_row(form.year) }}
+    </div>
+    <!--div class="cold-md-6">
+        {# { form_row(form.year) }} #}
+    </div-->
+</div>
+
+<button type="submit" class="btn btn-primary">Filtrer</button>
 {{ form_end(form) }}

@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Brand;
 use App\Entity\SecondHandCar;
 use App\Model\SearchData;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -23,10 +24,10 @@ class SearchForm extends AbstractType
                     'placeholder' => 'recherche de voiture'
                 ]
             ])
-            ->add('secondHandCars', EntityType::class, [
+            ->add('brands', EntityType::class, [
                 'label' => false,
                 'required' => false,
-                'class' => SecondHandCar::class,
+                'class' => Brand::class,
                 'expanded' => true,
                 'multiple' => true
 
@@ -39,6 +40,31 @@ class SearchForm extends AbstractType
                     'placeholder' => 'Prix minimum'
                 ]
             ])
+            ->add('max', NumberType::class, [
+                'label' => false,
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'Prix maximum'
+                ]
+            ])
+
+            ->add('km', NumberType::class, [
+                'label' => false,
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'Kilometre maximum'
+                ]
+            ])
+
+            ->add('year', NumberType::class, [
+                'label' => false,
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'Année'
+                ]
+            ])
+
+
         ;
     }
     public function configureOptions(OptionsResolver $resolver)

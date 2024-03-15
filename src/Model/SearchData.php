@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-use App\Entity\SecondHandCar;
+use App\Entity\Brand;
 
 class SearchData
 {
@@ -12,10 +12,14 @@ class SearchData
     //var string
     public string $q = '';
 
-    public $secondHandCars = [];
+    public $brands = [];
 
     public $max;
 
     public $min;
+
+    public $km;
+
+    public $year;
 
 }

@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\SecondHandCar;
+use App\Model\SearchData;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -47,8 +48,13 @@ class SecondHandCarRepository extends ServiceEntityRepository
 //    }
 
 //return SecondHandCars[]
-/*public function findSearch()
+public function findSearch(SearchData $search): array
 {
+    $query = $this
+        ->createQueryBuilder('s')
+        ->select('b', 's')
+        ->join('s.brand', 'b');
     return $this->findAll();
-}*/
+    //return $query->getQuery()->getResult();
+}
 }

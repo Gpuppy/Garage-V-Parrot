@@ -5,8 +5,10 @@ namespace App\Controller;
 use App\Entity\SecondHandCar;
 use App\Form\SearchForm;
 use App\Model\SearchData;
+use App\Repository\SecondHandCarRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -18,10 +20,11 @@ class SecondHandCarController extends AbstractController
     }
 
     #[Route('/SecondHandCar', name: 'app_second_hand_car')]
-    public function index(): Response
+    public function index(SecondHandCarRepository $repository, Request $request): Response
     {
         $data = new SearchData();
         $form = $this->createForm(SearchForm::class, $data);
+        //$form->handleRequest()
         $SecondHandCars = $this->entityManager->getRepository(SecondHandCar::class)->findAll();
         //$SecondHandCars = $repository->findSearch();
         return $this->render('second_hand_car/index.html.twig', [
