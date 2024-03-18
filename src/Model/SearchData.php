@@ -2,24 +2,24 @@
 
 namespace App\Model;
 
-use App\Entity\Brand;
+use App\Entity\Brands;
 
 class SearchData
 {
     //var int
-    //public $page = 1;
+
 
     //var string
     public string $q = '';
 
-    public $brands = [];
+    public array $brands = [];
 
-    public $max;
+    public string $max;
 
-    public $min;
+    public int $min;
 
-    public $km;
+    public int $km;
 
-    public $year;
+    public int $year;
 
 }

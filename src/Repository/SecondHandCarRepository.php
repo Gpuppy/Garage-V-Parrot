@@ -54,7 +54,41 @@ public function findSearch(SearchData $search): array
         ->createQueryBuilder('s')
         ->select('b', 's')
         ->join('s.brand', 'b');
-    return $this->findAll();
-    //return $query->getQuery()->getResult();
+    //return $this->findAll();
+    if(!empty($search->q)) {
+        $query = $query
+            ->andWhere('s.name LIKE :q')
+            ->setParameter('q', "%{$search->q}%");
+    }
+    if(!empty($search->min)) {
+        $query = $query
+            ->andWhere('s.price >= :min')
+            ->setParameter('min', "%{$search->min}%");
+    }
+    if(!empty($search->max)) {
+        $query = $query
+            ->andWhere('s.price <= : max')
+            ->setParameter('max', "%{$search->max}%");
+    }
+
+    if(!empty($search->km)) {
+        $query = $query
+            ->andWhere('s.km = km')
+            ->setParameter('km', "%{$search->km}%");
+    }
+    if(!empty($search->year)) {
+        $query = $query
+            ->andWhere('s.year =  year')
+            ->setParameter('year', "%{$search->year}%");
+    }
+
+    if(!empty($search->brands)) {
+        $query = $query
+            ->andWhere('b.id IN (: brands)')
+            ->setParameter('brands', "%{$search->brands}%");
+    }
+
+
+    return $query->getQuery()->getResult();
 }
 }

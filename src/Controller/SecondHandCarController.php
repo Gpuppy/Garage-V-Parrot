@@ -19,18 +19,52 @@ class SecondHandCarController extends AbstractController
 
     }
 
+    ##[Route('/SecondHandCar', name: 'app_second_hand_car')]
+    /*public function index(): Response
+    {
+        $SecondHandCars = $this->entityManager->getRepository(SecondHandCar::class)->findAll();
+        return $this->render('second_hand_car/index.html.twig', [
+            'controller_name' => 'SecondHandCarController',
+
+            'SecondHandCars' => $SecondHandCars
+        ]);
+    }*/
+
     #[Route('/SecondHandCar', name: 'app_second_hand_car')]
-    public function index(SecondHandCarRepository $repository, Request $request): Response
+    public function index(SecondHandCarRepository $secondHandCarRepository, Request $request) : Response
     {
         $data = new SearchData();
         $form = $this->createForm(SearchForm::class, $data);
-        //$form->handleRequest()
-        $SecondHandCars = $this->entityManager->getRepository(SecondHandCar::class)->findAll();
-        //$SecondHandCars = $repository->findSearch();
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()) {
+
+        }
+        //dd($data);
+        //$SecondHandCars = $this->entityManager->getRepository(SecondHandCar::class)->findAll();
+        $secondHandCars = $secondHandCarRepository->findSearch($data);
+
         return $this->render('second_hand_car/index.html.twig', [
-            /*'controller_name' => 'SecondHandCarController',*/
-            'SecondHandCars' => $SecondHandCars,
+            'SecondHandCars' => $secondHandCars,
             'form' => $form->createView()
+             /*'controller_name' => 'SecondHandCarController',*/
+            //'SecondHandCars' => $SecondHandCars,
+            //'form' => $form->createView()
         ]);
     }
+
+    /*public function show(SecondHandCarRepository $repository, Request $request)
+    {
+        $data = new SearchData();
+        $form = $this->createForm(SearchForm::class, $data);
+        $form->handleRequest();
+
+        //$SecondHandCars = $this->entityManager->getRepository(SecondHandCar::class)->findAll();
+        $SecondHandCars = $repository->findSearch();
+        return $this->render('second_hand_car/index.html.twig', [
+            /*'controller_name' => 'SecondHandCarController',*/
+            /*'SecondHandCars' => $SecondHandCars,
+            'form' => $form->createView()
+        ]);
+    }*/
+
 }
