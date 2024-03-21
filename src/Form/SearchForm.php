@@ -5,8 +5,11 @@ namespace App\Form;
 use App\Entity\Brand;
 use App\Entity\SecondHandCar;
 use App\Model\SearchData;
+
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
@@ -56,12 +59,11 @@ class SearchForm extends AbstractType
                 'label' => false,
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Kilometre maximum'
+                    'placeholder' => 'Kilometre'
                 ]
             ])
 
-            ->add('year', DateType::class, [
-                'years' => range((int) date('Y') - 5, (int) date('Y') + 5),
+            ->add('year',DateType::class, [
                 'label' => false,
                 'required' => false,
                 'attr' => [

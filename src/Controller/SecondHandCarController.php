@@ -34,6 +34,7 @@ class SecondHandCarController extends AbstractController
     public function index(SecondHandCarRepository $secondHandCarRepository, Request $request) : Response
     {
         $data = new SearchData();
+        $data->page = $request->get('page', 1);
         $form = $this->createForm(SearchForm::class, $data);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) {

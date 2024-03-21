@@ -6,6 +6,10 @@ use App\Entity\SecondHandCar;
 use App\Model\SearchData;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Knp\Component\Pager\Pagination\PaginationInterface;
+use Knp\Component\Pager\Paginator;
+use Knp\Component\Pager\PaginatorInterface;
+
 
 /**
  * @extends ServiceEntityRepository<SecondHandCar>
@@ -17,9 +21,15 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class SecondHandCarRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+
+    /**
+     * @var PaginatorInterface
+     */
+    private $paginator;
+    public function __construct(ManagerRegistry $registry, PaginatorInterface $paginator)
     {
         parent::__construct($registry, SecondHandCar::class);
+        $this->paginator = $paginator;
     }
 
 //    /**
@@ -48,7 +58,12 @@ class SecondHandCarRepository extends ServiceEntityRepository
 //    }
 
 //return SecondHandCars[]
-public function findSearch(SearchData $search): array
+
+    /**
+     * get products with search
+     * @return PaginationInterface
+     */
+public function findSearch(SearchData $search): PaginationInterface
 {
     $query = $this
         ->createQueryBuilder('s')
@@ -71,16 +86,30 @@ public function findSearch(SearchData $search): array
             ->setParameter('max', $search->max);
     }
 
+    /*if(!empty($search->min)) {
+        $query = $query
+            ->andWhere('s.km >= :min')
+            ->setParameter('min', $search->min);
+    }
+
+    if(!empty($search->max)) {
+        $query = $query
+            ->andWhere('s.km <= :max')
+            ->setParameter('max', $search->max);
+    }*/
+
     if(!empty($search->km)) {
         $query = $query
-            ->andWhere('s.km = km')
+            ->andWhere('s.km <= :km')
             ->setParameter('km', $search->km);
     }
 
 
+
+
     if(!empty($search->year)) {
         $query = $query
-            ->andWhere('s.year = year')
+            ->andWhere('s.year <= :year')
             ->setParameter('year', $search->year);
     }
 
@@ -95,7 +124,12 @@ public function findSearch(SearchData $search): array
             ->setParameter('brands', $search->brands);
     }
 
-
-    return $query->getQuery()->getResult();
+    $query = $query->getQuery();
+    return $this->paginator->paginate(
+        $query,
+        $search->page,
+        15
+    );
+    /*return $query->getQuery()->getResult();*/
 }
 }

@@ -30,8 +30,8 @@ class SearchData
 
     public float $max;
 
-    public string $km;
+    public float $km;
 
-    public string $year;
+    public $year;
 
 }
