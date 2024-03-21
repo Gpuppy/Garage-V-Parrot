@@ -37,9 +37,9 @@ if(slider) {
     }
 
 })
-    /*range.on('slide', function(values, handle) {
+    range.on('slide', function(values, handle) {
         console.log(values, handle)
-    })*/
+    })
    ;
 
 }
