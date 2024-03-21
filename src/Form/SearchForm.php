@@ -6,6 +6,7 @@ use App\Entity\Brand;
 use App\Entity\SecondHandCar;
 use App\Model\SearchData;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
@@ -18,6 +19,7 @@ class SearchForm extends AbstractType
     {
         $builder
             ->add('q', TextType::class, [
+                'empty_data' => '',
                 'label' => false,
                 'required' => false,
                 'attr' => [
@@ -25,14 +27,16 @@ class SearchForm extends AbstractType
                 ]
             ])
             ->add('brands', EntityType::class, [
+                'class' => Brand::class,
                 'label' => false,
                 'required' => false,
-                'class' => Brand::class,
                 'expanded' => true,
                 'multiple' => true
 
 
             ])
+
+
             ->add('min', NumberType::class, [
                 'label' => false,
                 'required' => false,
@@ -56,13 +60,15 @@ class SearchForm extends AbstractType
                 ]
             ])
 
-            ->add('year', NumberType::class, [
+            ->add('year', DateType::class, [
+                'years' => range((int) date('Y') - 5, (int) date('Y') + 5),
                 'label' => false,
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'Année'
                 ]
             ])
+
 
 
         ;
@@ -75,4 +81,6 @@ class SearchForm extends AbstractType
             'csrf protection' => false
         ]);
     }
+
+
 }

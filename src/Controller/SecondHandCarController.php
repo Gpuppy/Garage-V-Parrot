@@ -30,13 +30,14 @@ class SecondHandCarController extends AbstractController
         ]);
     }*/
 
-    #[Route('/SecondHandCar', name: 'app_second_hand_car')]
+    #[Route('/SecondHandCar', name: 'app_second_hand_car'/*, methods: ['GET']*/)]
     public function index(SecondHandCarRepository $secondHandCarRepository, Request $request) : Response
     {
         $data = new SearchData();
         $form = $this->createForm(SearchForm::class, $data);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) {
+            /*$data->page = $request->query->*/
 
         }
         //dd($data);

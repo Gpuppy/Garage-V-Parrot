@@ -2,24 +2,36 @@
 
 namespace App\Model;
 
-use App\Entity\Brands;
+//use App\Entity\Brands;
+
+
+use DateTime;
+use DateTimeInterface;
+use Doctrine\ORM\Mapping as ORM;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use Symfony\Component\Validator\Constraints\Date;
+
 
 class SearchData
 {
-    //var int
+    /** @var int */
+    public $page = 1;
 
-
-    //var string
+    /**  @var string */
     public string $q = '';
 
+    ## array
     public array $brands = [];
 
-    public string $max;
+    public string $price;
 
-    public int $min;
+    public float $min;
 
-    public int $km;
+    public float $max;
 
-    public int $year;
+    public string $km;
+
+    public string $year;
 
 }

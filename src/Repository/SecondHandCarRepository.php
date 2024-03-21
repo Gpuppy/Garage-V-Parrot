@@ -63,29 +63,36 @@ public function findSearch(SearchData $search): array
     if(!empty($search->min)) {
         $query = $query
             ->andWhere('s.price >= :min')
-            ->setParameter('min', "%{$search->min}%");
+            ->setParameter('min', $search->min);
     }
     if(!empty($search->max)) {
         $query = $query
-            ->andWhere('s.price <= : max')
-            ->setParameter('max', "%{$search->max}%");
+            ->andWhere('s.price <= :max')
+            ->setParameter('max', $search->max);
     }
 
     if(!empty($search->km)) {
         $query = $query
             ->andWhere('s.km = km')
-            ->setParameter('km', "%{$search->km}%");
+            ->setParameter('km', $search->km);
     }
+
+
     if(!empty($search->year)) {
         $query = $query
-            ->andWhere('s.year =  year')
-            ->setParameter('year', "%{$search->year}%");
+            ->andWhere('s.year = year')
+            ->setParameter('year', $search->year);
     }
+
+    /*if (isset($emptyData['year'])) {
+
+        $yearOptions['empty_data'] = $emptyData['year'];
+    }*/
 
     if(!empty($search->brands)) {
         $query = $query
-            ->andWhere('b.id IN (: brands)')
-            ->setParameter('brands', "%{$search->brands}%");
+            ->andWhere('b.id IN (:brands)')
+            ->setParameter('brands', $search->brands);
     }
 
 
