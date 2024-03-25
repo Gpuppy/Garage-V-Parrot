@@ -8,7 +8,7 @@
     <div class="row">
     <!--form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
         <input type="search" class="form-control" placeholder="Search..." aria-label="Search"-->
-        {% include 'second_hand_car/_filter.html.twig' with {form: form} only %}
+        {% include 'second_hand_car/_filter.html.twig' with {form: form , min: min, max: max } only %}
     <!--/form-->
     </div>
 
@@ -26,8 +26,8 @@
         <h2>{{ SecondHandCar.name }}</h2>
         <!--/div-->
         <h3>{{ SecondHandCar.brand }}</h3>
-        <h4>{{ SecondHandCar.km }}</h4>
-        <h5>{{ SecondHandCar.price }}</h5>
+        <h4>{{ SecondHandCar.km }}km </h4>
+        <h5>{{ SecondHandCar.price }}€ </h5>
         <h6>{{SecondHandCar.year()|date('d-m-Y')}} </h6>
 
         <!-- Button trigger modal -->

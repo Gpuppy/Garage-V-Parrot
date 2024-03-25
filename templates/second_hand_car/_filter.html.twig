@@ -15,8 +15,8 @@
         {{ form_row(form.max) }}
         </div>
 </div>
-<div id="slider"></div>
-
+<div id="slider" data-min="{{ min }}" data-max="{{ max }}"></div>
+{{ dump(min, max) }}
 <h4>Km</h4>
 <div class = "row">
     <div class ="col-md-6">

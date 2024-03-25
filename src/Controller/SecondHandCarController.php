@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+
 class SecondHandCarController extends AbstractController
 {
     public function __construct(private readonly EntitymanagerInterface $entityManager)
@@ -37,36 +38,24 @@ class SecondHandCarController extends AbstractController
         $data->page = $request->get('page', 1);
         $form = $this->createForm(SearchForm::class, $data);
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()) {
-            /*$data->page = $request->query->*/
-
-        }
-        //dd($data);
-        //$SecondHandCars = $this->entityManager->getRepository(SecondHandCar::class)->findAll();
+        [$min, $max] = $secondHandCarRepository->findMinMax($data);
         $secondHandCars = $secondHandCarRepository->findSearch($data);
 
         return $this->render('second_hand_car/index.html.twig', [
             'SecondHandCars' => $secondHandCars,
-            'form' => $form->createView()
+            'form' => $form->createView(),
+             'min' => $min,
+             'max' => $max
              /*'controller_name' => 'SecondHandCarController',*/
             //'SecondHandCars' => $SecondHandCars,
-            //'form' => $form->createView()
+
         ]);
     }
 
-    /*public function show(SecondHandCarRepository $repository, Request $request)
-    {
-        $data = new SearchData();
-        $form = $this->createForm(SearchForm::class, $data);
-        $form->handleRequest();
 
-        //$SecondHandCars = $this->entityManager->getRepository(SecondHandCar::class)->findAll();
-        $SecondHandCars = $repository->findSearch();
-        return $this->render('second_hand_car/index.html.twig', [
-            /*'controller_name' => 'SecondHandCarController',*/
-            /*'SecondHandCars' => $SecondHandCars,
-            'form' => $form->createView()
-        ]);
-    }*/
 
 }
+/*if($form->isSubmitted() && $form->isValid()) {*/
+/*$data->page = $request->query->}*/
+//dd($data);
+//$SecondHandCars = $this->entityManager->getRepository(SecondHandCar::class)->findAll();

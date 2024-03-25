@@ -5,10 +5,13 @@ namespace App\Repository;
 use App\Entity\SecondHandCar;
 use App\Model\SearchData;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\Paginator;
 use Knp\Component\Pager\PaginatorInterface;
+
 
 
 /**
@@ -32,6 +35,89 @@ class SecondHandCarRepository extends ServiceEntityRepository
         $this->paginator = $paginator;
     }
 
+
+    /**
+     * get products with search
+     * @return PaginationInterface
+     */
+    public function findSearch(SearchData $search): PaginationInterface
+    {
+        $query = $this->getSearchQuery($search)->getQuery();
+        return $this->paginator->paginate(
+            $query,
+            $search->page,
+            15
+        );    /*return $query->getQuery()->getResult();*/
+    }
+
+
+        /**
+         * Gets minimum and maximum price searched
+         * @return integer[]
+         */
+    public function findMinMax(SearchData $search): array
+    {
+        $results = $this->getSearchQuery($search)
+            ->select('Min(s.price) as min', 'MAX(s.price) as max')
+            ->getQuery()
+            ->getScalarResult();
+        return [$results[0]['min'], $results[0]['max']];
+    }
+
+    private function getSearchQuery (SearchData $search): QueryBuilder
+    {
+        $query = $this
+            ->createQueryBuilder('s')
+            ->select('b', 's')
+            ->join('s.brand', 'b');
+        //return $this->findAll();
+        if(!empty($search->q)) {
+            $query = $query
+                ->andWhere('s.name LIKE :q')
+                ->setParameter('q', "%{$search->q}%");
+        }
+        if(!empty($search->min)) {
+            $query = $query
+                ->andWhere('s.price >= :min')
+                ->setParameter('min', $search->min);
+        }
+        if(!empty($search->max)) {
+            $query = $query
+                ->andWhere('s.price <= :max')
+                ->setParameter('max', $search->max);
+        }
+
+
+
+        if(!empty($search->km)) {
+            $query = $query
+                ->andWhere('s.km <= :km')
+                ->setParameter('km', $search->km);
+        }
+
+
+
+
+        if(!empty($search->year)) {
+            $query = $query
+                ->andWhere('s.year <= :year')
+                ->setParameter('year', $search->year);
+        }
+
+        /*if (isset($emptyData['year'])) {
+
+            $yearOptions['empty_data'] = $emptyData['year'];
+        }*/
+
+        if(!empty($search->brands)) {
+            $query = $query
+                ->andWhere('b.id IN (:brands)')
+                ->setParameter('brands', $search->brands);
+        }
+
+        return $query;
+
+    }
 //    /**
 //     * @return SecondHandCar[] Returns an array of SecondHandCar objects
 //     */
@@ -59,77 +145,5 @@ class SecondHandCarRepository extends ServiceEntityRepository
 
 //return SecondHandCars[]
 
-    /**
-     * get products with search
-     * @return PaginationInterface
-     */
-public function findSearch(SearchData $search): PaginationInterface
-{
-    $query = $this
-        ->createQueryBuilder('s')
-        ->select('b', 's')
-        ->join('s.brand', 'b');
-    //return $this->findAll();
-    if(!empty($search->q)) {
-        $query = $query
-            ->andWhere('s.name LIKE :q')
-            ->setParameter('q', "%{$search->q}%");
-    }
-    if(!empty($search->min)) {
-        $query = $query
-            ->andWhere('s.price >= :min')
-            ->setParameter('min', $search->min);
-    }
-    if(!empty($search->max)) {
-        $query = $query
-            ->andWhere('s.price <= :max')
-            ->setParameter('max', $search->max);
-    }
 
-    /*if(!empty($search->min)) {
-        $query = $query
-            ->andWhere('s.km >= :min')
-            ->setParameter('min', $search->min);
-    }
-
-    if(!empty($search->max)) {
-        $query = $query
-            ->andWhere('s.km <= :max')
-            ->setParameter('max', $search->max);
-    }*/
-
-    if(!empty($search->km)) {
-        $query = $query
-            ->andWhere('s.km <= :km')
-            ->setParameter('km', $search->km);
-    }
-
-
-
-
-    if(!empty($search->year)) {
-        $query = $query
-            ->andWhere('s.year <= :year')
-            ->setParameter('year', $search->year);
-    }
-
-    /*if (isset($emptyData['year'])) {
-
-        $yearOptions['empty_data'] = $emptyData['year'];
-    }*/
-
-    if(!empty($search->brands)) {
-        $query = $query
-            ->andWhere('b.id IN (:brands)')
-            ->setParameter('brands', $search->brands);
-    }
-
-    $query = $query->getQuery();
-    return $this->paginator->paginate(
-        $query,
-        $search->page,
-        15
-    );
-    /*return $query->getQuery()->getResult();*/
-}
 }
