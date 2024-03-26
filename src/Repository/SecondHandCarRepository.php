@@ -57,14 +57,14 @@ class SecondHandCarRepository extends ServiceEntityRepository
          */
     public function findMinMax(SearchData $search): array
     {
-        $results = $this->getSearchQuery($search)
-            ->select('Min(s.price) as min', 'MAX(s.price) as max')
+        $results = $this->getSearchQuery($search, true)
+            ->select('MIN(s.price) as min', 'MAX(s.price) as max')
             ->getQuery()
             ->getScalarResult();
-        return [$results[0]['min'], $results[0]['max']];
+        return [(int)$results[0]['min'], (int)$results[0]['max']];
     }
 
-    private function getSearchQuery (SearchData $search): QueryBuilder
+    private function getSearchQuery (SearchData $search, $ignorePrice = false): QueryBuilder
     {
         $query = $this
             ->createQueryBuilder('s')
@@ -76,12 +76,12 @@ class SecondHandCarRepository extends ServiceEntityRepository
                 ->andWhere('s.name LIKE :q')
                 ->setParameter('q', "%{$search->q}%");
         }
-        if(!empty($search->min)) {
+        if(!empty($search->min) && $ignorePrice === false) {
             $query = $query
                 ->andWhere('s.price >= :min')
                 ->setParameter('min', $search->min);
         }
-        if(!empty($search->max)) {
+        if(!empty($search->max) && $ignorePrice === false) {
             $query = $query
                 ->andWhere('s.price <= :max')
                 ->setParameter('max', $search->max);

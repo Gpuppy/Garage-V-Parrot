@@ -15,13 +15,14 @@
         {{ form_row(form.max) }}
         </div>
 </div>
-<div id="slider" data-min="{{ min }}" data-max="{{ max }}"></div>
-{{ dump(min, max) }}
+<div id="slider" class="col-md-2" data-min="{{ min }}" data-max="{{ max }}" style="margin-top: 1rem "></div>
+{#  dump(min, max) }} #}{
 <h4>Km</h4>
 <div class = "row">
     <div class ="col-md-6">
         {{ form_row(form.km) }}
     </div>
+    <div id="slider" class="col-md-2" data-min="{{ min }}" data-max="{{ max }}"></div>
     <!--div class="cold-md-6">
         {# { form_row(form.km) }} #}
     </div-->

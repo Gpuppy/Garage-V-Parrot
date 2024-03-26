@@ -9,7 +9,7 @@
 import './styles/app.css';
 
 // start the Stimulus application
-//import './bootstrap';
+import './bootstrap';
 
 
 // assets/app.js
@@ -28,13 +28,20 @@ const slider = document.getElementById('slider');
 
 
 if(slider) {
+    const min = document.getElementById('search_form_min')
+    const max = document.getElementById('search_form_max')
+    const minValue = Math.floor(parseInt(slider.dataset.min, 10) / 10) * 10
+    const maxValue = Math.ceil(parseInt(slider.dataset.max, 10) / 10) * 10
     const range = noUiSlider.create(slider, {
-        start: [1000, 100000 /*min.value || parseInt(slider.dataset.min,1000), max.value || parseInt(slider.dataset.max,1000)*/],
+        start: [/*1000, 100000 */min.value || minValue, max.value || maxValue],
         connect: true,
-        step: 1000,
+        step: 100,
+        decimals: 3,
+        thousand: '.',
+        suffix: ' (FR€)',
         range: {
-            'min':  /*parseInt(slider.dataset.min, 1000), */1000,
-            'max': /* parseInt(slider.dataset.max, 1000) */100000
+            'min': minValue, /*1000,*/
+            'max': maxValue  /*100000*/
         },
 
 
@@ -42,14 +49,13 @@ if(slider) {
     });
 
 
-    const min = document.getElementById('search_form_min')
-    const max = document.getElementById('search_form_max')
+
     range.on('slide', function(values, handle) {
         console.log(values, handle);
          if(handle === 0){
              min.value = Math.round(values[0])
          }
-        if(handle === 0){
+        if(handle === 1){
             max.value = Math.round(values[1])
         }
 

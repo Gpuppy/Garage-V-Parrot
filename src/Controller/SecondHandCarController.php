@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\SecondHandCar;
+
 use App\Form\SearchForm;
 use App\Model\SearchData;
 use App\Repository\SecondHandCarRepository;
