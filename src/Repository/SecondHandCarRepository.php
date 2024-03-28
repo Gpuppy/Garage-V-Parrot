@@ -104,10 +104,6 @@ class SecondHandCarRepository extends ServiceEntityRepository
                 ->setParameter('year', $search->year);
         }
 
-        /*if (isset($emptyData['year'])) {
-
-            $yearOptions['empty_data'] = $emptyData['year'];
-        }*/
 
         if(!empty($search->brands)) {
             $query = $query

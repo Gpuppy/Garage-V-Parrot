@@ -16,22 +16,22 @@
         </div>
 </div>
 <div id="slider" class="col-md-2" data-min="{{ min }}" data-max="{{ max }}" style="margin-top: 1rem "></div>
-{#  dump(min, max) }} #}{
+{#  dump(min, max) }} #}
 <h4>Km</h4>
 <div class = "row">
     <div class ="col-md-6">
         {{ form_row(form.km) }}
     </div>
-    <div id="slider" class="col-md-2" data-min="{{ min }}" data-max="{{ max }}"></div>
-    <!--div class="cold-md-6">
-        {# { form_row(form.km) }} #}
-    </div-->
+
+
 </div>
+<div id="kmSlider" class="col-md-2" data-min="{{ min }}" data-max="{{ max }}"></div>
 
 <h4>Année</h4>
 <div class = "row">
     <div class ="col-md-6">
         {{ form_row(form.year) }}
+        <div id="yearSlider" class="col-md-2" data-min="{{ min }}" data-max="{{ max }}"></div>
     </div>
     <!--div class="cold-md-6">
         {# { form_row(form.year) }} #}

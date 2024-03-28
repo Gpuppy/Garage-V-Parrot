@@ -32,6 +32,7 @@ class SearchData
 
     public float $km;
 
+
     public $year;
 
 }

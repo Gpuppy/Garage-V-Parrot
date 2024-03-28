@@ -35,20 +35,19 @@ if(slider) {
     const range = noUiSlider.create(slider, {
         start: [/*1000, 100000 */min.value || minValue, max.value || maxValue],
         connect: true,
-        step: 100,
+        step: 3,
         decimals: 3,
-        thousand: '.',
+        thousand: 1,
+        number_format :(2, ',', ','),
         suffix: ' (FR€)',
+
         range: {
-            'min': minValue, /*1000,*/
-            'max': maxValue  /*100000*/
+            'min': /*minValue, */1000,
+            'max': /*maxValue  */100000
+
         },
 
-
-
     });
-
-
 
     range.on('slide', function(values, handle) {
         console.log(values, handle);
@@ -58,12 +57,69 @@ if(slider) {
         if(handle === 1){
             max.value = Math.round(values[1])
         }
-
-
     })
 
+//km slider
+    const kmSlider = document.getElementById('kmSlider');
 
-//search_form_min
+    if(kmSlider){
+            const km = document.getElementById('search_form_km')
+            const range = noUiSlider.create(kmSlider, {
+            start: [1000, 300000 /*min.value || minValue, max.value || maxValue*/],
+            connect: true,
+            step: 3,
+            range: {
+                'min': /*minValue, */1000,
+                'max': /*maxValue  */300000
+            },
+        });
+
+        range.on('slide', function(values, handle) {
+            console.log(values, handle);
+        })
+    }
+
+//Year slider
+
+
+    const yearSlider = document.getElementById('yearSlider');
+    function timestamp(str) {
+        return new Date(str).getTime();
+    }
+
+    if(yearSlider){
+        const year = document.getElementById('search_form_year_year')
+        const range = noUiSlider.create(yearSlider, {
+            // Two more timestamps indicate the handle starting positions.
+            start: [timestamp('2009'), timestamp('2024')],
+            connect: true,
+            // Steps of one week
+            step: 7 * 24 * 60 * 60 * 1000,
+            range: {
+                min: timestamp('2009'),
+                max: timestamp('2024')
+            }
+
+        });
+        range.on('slide', function(values, handle) {
+            console.log(values, handle);
+        })
+
+        /*const dateValues = [
+            document.getElementById('event-start'),
+            document.getElementById('event-end')
+        ];
+
+        const formatter = new Intl.DateTimeFormat('fr-FR', {
+            dateStyle: 'full'
+        });
+
+        yearSlider.noUiSlider.on('update', function (values, handle) {
+            dateValues[handle].innerHTML = formatter.format(new Date(+values[handle]));
+        });*/
+
+
+    }
 
 }
 
