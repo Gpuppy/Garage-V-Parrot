@@ -87,21 +87,40 @@ class SecondHandCarRepository extends ServiceEntityRepository
                 ->setParameter('max', $search->max);
         }
 
-
-
-        if(!empty($search->km)) {
+        /*if(!empty($search->km)) {
             $query = $query
                 ->andWhere('s.km <= :km')
                 ->setParameter('km', $search->km);
+        }*/
+
+        if(!empty($search->minKm)) {
+            $query = $query
+                ->andWhere('s.km >= :minKm')
+                ->setParameter('minKm', $search->minKm);
         }
 
+        if(!empty($search->maxKm)) {
+            $query = $query
+                ->andWhere('s.km <= :maxKm')
+                ->setParameter('maxKm', $search->maxKm);
+        }
 
-
-
-        if(!empty($search->year)) {
+        /*if(!empty($search->year)) {
             $query = $query
                 ->andWhere('s.year <= :year')
                 ->setParameter('year', $search->year);
+        }*/
+
+        if(!empty($search->minYear)) {
+            $query = $query
+                ->andWhere('s.Year >= :minYear')
+                ->setParameter('minYear', $search->minYear);
+        }
+
+        if(!empty($search->maxKm)) {
+            $query = $query
+                ->andWhere('s.Year <= :maxYear')
+                ->setParameter('maxYear', $search->maxYear);
         }
 
 

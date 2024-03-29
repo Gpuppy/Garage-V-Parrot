@@ -32,7 +32,14 @@ class SearchData
 
     public float $km;
 
+    public float $minKm;
+
+    public float $maxKm;
 
     public $year;
+
+    public float $minYear;
+
+    public float $maxYear;
 
 }
