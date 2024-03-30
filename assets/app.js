@@ -64,25 +64,28 @@ if(slider) {
         }
     })
 
-
-
 //km slider
     const kmSlider = document.getElementById('kmSlider');
 
     if(kmSlider){
             const minKm = document.getElementById('search_form_minKm')
             const maxKm = document.getElementById('search_form_maxKm')
+            //const kmPrefixFormat = wNumb({suffix: 'km', decimals: 0})
             const range = noUiSlider.create(kmSlider, {
             start: [1000, 300000 /*min.value || minValue, max.value || maxValue*/],
             connect: true,
             step: 3,
+            tooltips:true,
             range: {
                 'min': /*minValue, */1000,
                 'max': /*maxValue  */300000
-            }
-
+            },
+             // if removed we get the values in the "search_form_km"
+            format : wNumb({
+                decimals:0,
+                suffix:'Km'
+            })
         });
-
 
         range.on('slide', function(values, handle) {
             console.log(values, handle);
@@ -92,12 +95,10 @@ if(slider) {
             if(handle === 1){
                 maxKm.value = Math.round(values[1])
             }
-
         })
     }
 
 //Year slider
-
 
     const yearSlider = document.getElementById('yearSlider');
     function timestamp(str) {
@@ -107,20 +108,11 @@ if(slider) {
     if(yearSlider){
         const minYear = document.getElementById('search_form_minYear')
         const maxYear = document.getElementById('search_form_maxYear')
-        //const year = document.getElementById('search_form_year_year')
-        //const yearsFormat = wNumb({ decimals: 0})
-        const years = [
-                "2009", "2010", "2011",
-                "2012", "2013", "2014",
-                "2015","2016", "2017", "2018",
-                "2019","2020", "2021", "2022",
-                "2023", "2024"
-        ]
         const range = noUiSlider.create(yearSlider, {
             // Two more timestamps indicate the handle starting positions.
             start: [timestamp('2009'), timestamp('2024')],
             connect: true,
-            step: 7 * 24 * 60 * 60 * 1000,
+            //step: 7 * 24 * 60 * 60 * 1000,
             range: {
                 min: timestamp('2009'),
                 max: timestamp('2024')
@@ -128,14 +120,19 @@ if(slider) {
             format: wNumb({
                 decimals: 0
             }),
-
-            /*yearSlider:noUiSlider.on('update', function (values, handle) {
-                dateValues[handle].innerHTML = formatter.format(new Date(+values[handle]));
-            }),*/
-
+            step:1,
+            tooltips: {
+                to:yearFormat // customtooltip formatting function for displaying years
+            }
 
 
         });
+
+        //Custom Tooltip Formatting function for year display
+
+        function yearFormat(value) {
+            return new Date(+value).getFullYear().toString();
+        }
         range.on('slide', function(values, handle) {
             console.log(values, handle);
             if(handle === 0){
@@ -145,19 +142,6 @@ if(slider) {
                 maxYear.value = (values[1])
             }
         })
-
-        /*const dateValues = [
-            document.getElementById('event-start'),
-            document.getElementById('event-end')
-        ];
-
-        const formatter = new Intl.DateTimeFormat('fr-FR', {
-            dateStyle: 'full'
-        });
-
-        yearSlider.noUiSlider.on('update', function (values, handle) {
-            dateValues[handle].innerHTML = formatter.format(new Date(+values[handle]));
-        });*/
 
 
     }
