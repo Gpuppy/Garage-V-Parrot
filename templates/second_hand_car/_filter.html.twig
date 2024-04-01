@@ -8,10 +8,10 @@
 
 <h4>Prix</h4>
 <div class = "row">
-    <div class ="col-md-6">
+    <div class ="col-md-10">
         {{ form_row(form.min) }}
 
-    <div class="cold-md-4">
+    <div class="cold-md-10">
         {{ form_row(form.max) }}
         </div>
     </div>
@@ -20,8 +20,8 @@
 {#  dump(min, max) }} #}
 
 <h4>Km</h4>
-<div class = "row">
-    <div class ="col-md-6">
+<div class = "row ms-10">
+    <div class ="col-md-10">
         {{ form_row(form.minKm) }}
 
         <div class="cold-md-4">
@@ -33,10 +33,10 @@
 
 <h4>Année</h4>
 <div class = "row">
-    <div class ="col-md-6">
+    <div class ="col-md-10">
         {{ form_row(form.minYear) }}
 
-        <div class="cold-md-4">
+        <div class="cold-md-10">
             {{ form_row(form.maxYear) }}
         </div>
         <div id="yearSlider" class="col-md-2" data-min="{{ min }}" data-max="{{ max }}"></div>

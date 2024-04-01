@@ -24,6 +24,9 @@ import './bootstrap';
 import * as noUiSlider from 'nouislider';
 import 'nouislider/dist/nouislider.css';
 import wNumb from 'wnumb';
+import Filter from './styles/modules/Filter'
+
+new Filter(document.querySelector('.js-filter'))
 
 
 const slider = document.getElementById('slider');

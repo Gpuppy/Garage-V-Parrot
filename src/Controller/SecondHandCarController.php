@@ -8,6 +8,7 @@ use App\Model\SearchData;
 use App\Repository\SecondHandCarRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -40,6 +41,11 @@ class SecondHandCarController extends AbstractController
         $form->handleRequest($request);
         [$min, $max] = $secondHandCarRepository->findMinMax($data);
         $secondHandCars = $secondHandCarRepository->findSearch($data);
+        if($request->isXmlHttpRequest()) {
+            return new JsonResponse([
+                'content' => $this->renderView('second_hand_car/index.html.twig', ['secondHandCars' => $secondHandCars])
+            ]);
+        }
 
         return $this->render('second_hand_car/index.html.twig', [
             'SecondHandCars' => $secondHandCars,
