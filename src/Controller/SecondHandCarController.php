@@ -43,7 +43,8 @@ class SecondHandCarController extends AbstractController
         $secondHandCars = $secondHandCarRepository->findSearch($data);
         if($request->isXmlHttpRequest()) {
             return new JsonResponse([
-                'content' => $this->renderView('second_hand_car/index.html.twig', ['secondHandCars' => $secondHandCars])
+                'content' => $this->renderView('second_hand_car/_second_hand_cars.html.twig', ['SecondHandCars' => $secondHandCars]),
+                'sorting' => $this->renderView('second_hand_car/_sorting.html.twig', ['SecondHandCars' => $secondHandCars])
             ]);
         }
 

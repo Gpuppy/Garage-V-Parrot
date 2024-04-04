@@ -2,7 +2,7 @@
  *@property {HTMLElement} pagination
  *@property {HTMLElement} content
  *@property {HTMLElement} sorting
- *@property {HTMLElement} form
+ *@property {HTMLFormElement} form
  */
 
 export default class Filter {
@@ -25,22 +25,40 @@ export default class Filter {
      * adds behavings to different elements
      */
     bindEvents() {
-        this.sorting.querySelectorAll('a').forEach(a=> {
-            a.addEventListener('click', e => {
+        this.sorting.addEventListener('click', e => {
+            if(e.target.tagName === 'A')!
                 e.preventDefault()
-                this.loadUrl(a.getAttribute('href'))
-            })
+            this.loadUrl(e.target.getAttribute('href'))
+                /*this.loadUrl(a.getAttribute('href'))
+            })*/
+        })
+        this.form.querySelectorAll('input[type=checkbox]').forEach(input => {
+            input.addEventListener('change', this.loadForm.bind(this))
         })
     }
+
+         async loadForm() {
+         const data = new FormData(this.form)
+         const url = new URL(this.form.getAttribute('action') || window.location.href)
+         const params = new URLSearchParams()
+         data.forEach((value, key) => {
+             params.append(key, value)
+             })
+             debugger
+
+         }
+
     async loadUrl(url) {
       const response = await fetch(url, {
         headers: {
             'X-Requested-With': 'XMLHttpRequest'
         }
 })
-        if(response.status >= 200 && response.status > 300) {
+        if(response.status >= 200 && response.status < 300) {
           const data = await response.json()
             this.content.innerHTML = data.content
+            this.sorting.innerHTML = data.sorting
+            history.replaceState({}, '', url)
         } else {
             console.error(response)
         }

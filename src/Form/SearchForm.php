@@ -52,13 +52,6 @@ class SearchForm extends AbstractType
                 ]
             ])
 
-            /*->add('km', NumberType::class, [
-                'label' => false,
-                'required' => false,
-                'attr' => [
-                    'placeholder' => 'Kilometre'
-                ]
-            ])*/
 
             ->add('minKm', NumberType::class, [
             'label' => false,
@@ -74,15 +67,6 @@ class SearchForm extends AbstractType
             'placeholder' => 'Kilometre'
         ]
     ])
-
-
-            /*->add('year',DateType::class, [
-                'label' => false,
-                'required' => false,
-                'attr' => [
-                    'placeholder' => 'Année'
-                ]
-            ])*/
 
             ->add('minYear', NumberType::class, [
                 'label' => false,

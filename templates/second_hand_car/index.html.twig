@@ -5,86 +5,36 @@
 {% block body %}
 
     <!---search bar--->
-    <div class="container js-filter ms-2">
+    <div class="container js-filter ">
     <div class="row">
-        <div class = "col-md-3 js-filter-form">
-
-
+        <div class = "col-md-3 ">
         {% include 'second_hand_car/_filter.html.twig' with {form: form , min: min, max: max } only %}
 
     <!--/form-->
     </div>
 <div class="justify-content-end mb-2 js-filter-sorting">
-    {{ knp_pagination_sortable(SecondHandCars, 'Price', 's.price') }}
+    {# { knp_pagination_sortable(SecondHandCars, 'Price', 's.price') }}
     {{ knp_pagination_sortable(SecondHandCars, 'Km', 's.km') }}
-    {{ knp_pagination_sortable(SecondHandCars, 'Year', 's.year') }}
+    {{ knp_pagination_sortable(SecondHandCars, 'Year', 's.year') }#}
+    {% include 'second_hand_car/_sorting.html.twig' %}
 </div>
-    </div>
-    </div>
-
-<div class="px-4 py-1 my-3 text-center">
-    <h1 class="display-5 fw-bold text-body-emphasis">Voitures d'occasion ✅</h1>
-</div>
-    <div class = "row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 filter-content">
-
-{% for SecondHandCar in SecondHandCars %}
-     <div class = "col pb-2 pb-sm-3 text-center">
-    <div class = " card-hover position-relative bg-light rounded-1 p-3 mb-4">
-
-        <img src="{{ vich_uploader_asset(SecondHandCar, 'imageFile') }}" width ="300" height = "300"  alt="{{ SecondHandCar.image }}">
-
-        <h2>{{ SecondHandCar.name }}</h2>
-        <!--/div-->
-        <h3>{{ SecondHandCar.brand }}</h3>
-        <h4>{{ SecondHandCar.km }} km </h4>
-        <h5>{{ (SecondHandCar.price / 100) | number_format(2, '.', ',') }} € </h5>
-        <h6>{{ SecondHandCar.year()|date('d-m-Y')}} </h6>
-
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#Modal">
-            Plus de détails
-            </button>
-
-        <!-- Modal -->
-        <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="ModalLabel">Description</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body text-center bg-secondary text-white">
-                        {{SecondHandCar.description}}
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-
-                    </div>
-                </div>
-            </div>
+        <div class="px-4 py-1 my-3 text-center">
+            <h1 class="display-5 fw-bold text-body-emphasis">Voitures d'occasion ✅</h1>
         </div>
 
-
-
-<div>
-
-
-                     </div>
-
-
-
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 js-filter-content">
+            {% include 'second_hand_car/_second_hand_cars.html.twig' %}
         </div>
-
+    </div>
     </div>
 
 
+    <!--div class = "row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 filter-content"-->
 
-{% endfor %}
+
         <div class="js-filter-pagination">
             {{ knp_pagination_render(SecondHandCars) }}
-
         </div>
-    </div>
 
 
 {% endblock %}
