@@ -41,10 +41,11 @@ class SecondHandCarController extends AbstractController
         $form->handleRequest($request);
         [$min, $max] = $secondHandCarRepository->findMinMax($data);
         $secondHandCars = $secondHandCarRepository->findSearch($data);
-        if($request->isXmlHttpRequest()) {
+        if($request->get('ajax')) {
             return new JsonResponse([
                 'content' => $this->renderView('second_hand_car/_second_hand_cars.html.twig', ['SecondHandCars' => $secondHandCars]),
-                'sorting' => $this->renderView('second_hand_car/_sorting.html.twig', ['SecondHandCars' => $secondHandCars])
+                'sorting' => $this->renderView('second_hand_car/_sorting.html.twig', ['SecondHandCars' => $secondHandCars]),
+                'pagination' => $this->renderView('second_hand_car/_pagination.html.twig', ['SecondHandCars' => $secondHandCars])
             ]);
         }
 

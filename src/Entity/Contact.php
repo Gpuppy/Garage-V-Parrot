@@ -14,8 +14,8 @@ class Contact
     private ?int $id = null;
 
 
-    #[ORM\Column]
-    private ?bool $processed = null;
+    ##[ORM\Column]
+    //private ?bool $processed = null;
 
     #[ORM\Column(length: 255)]
     private ?string $firstname = null;

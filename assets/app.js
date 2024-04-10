@@ -58,13 +58,19 @@ if(slider) {
     });
 
     range.on('slide', function(values, handle) {
-        console.log(values, handle);
+        //console.log(values, handle);
          if(handle === 0){
              min.value = Math.round(values[0])
          }
         if(handle === 1){
             max.value = Math.round(values[1])
         }
+
+    })
+   range.on('end', function(values, handle){
+        //min.value = 1
+        //minValue.dispatchEvent(new Event('change'))
+       min.dispatchEvent(new Event('change'))
     })
 
 //km slider
@@ -91,14 +97,21 @@ if(slider) {
         });
 
         range.on('slide', function(values, handle) {
-            console.log(values, handle);
+            //console.log(values, handle);
             if(handle === 0){
                 minKm.value = Math.round(values[0])
             }
             if(handle === 1){
                 maxKm.value = Math.round(values[1])
             }
+
         })
+        range.on('end', function(values,handle){
+            min.dispatchEvent(new Event('change',{ bubbles: true }))
+
+        })
+
+
     }
 
 //Year slider
@@ -128,7 +141,6 @@ if(slider) {
                 to:yearFormat // customtooltip formatting function for displaying years
             }
 
-
         });
 
         //Custom Tooltip Formatting function for year display
@@ -137,15 +149,26 @@ if(slider) {
             return new Date(+value).getFullYear().toString();
         }
         range.on('slide', function(values, handle) {
-            console.log(values, handle);
+            //console.log(values, handle);
             if(handle === 0){
                 minYear.value = (values[0])
             }
             if(handle === 1){
                 maxYear.value = (values[1])
             }
+
         })
 
+
+        range.on('end', function(values,handle){
+            min.dispatchEvent(new Event('change',{ bubbles: true }))
+            //if(handle === 1){min.dispatchEvent(new Event('change',))}
+//if(handle === 1){max.dispatchEvent(new Event('change',))}
+            //min.dispatchEvent(new Event('change',{ bubbles: true }))
+            //console.log('Event triggered')
+            //console.log('values, handle')
+
+        })
 
     }
 

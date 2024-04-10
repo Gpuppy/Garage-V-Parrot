@@ -32,7 +32,7 @@ export default class Filter {
                 /*this.loadUrl(a.getAttribute('href'))
             })*/
         })
-        this.form.querySelectorAll('input[type=checkbox]').forEach(input => {
+        this.form.querySelectorAll('input').forEach(input => {
             input.addEventListener('change', this.loadForm.bind(this))
         })
     }
@@ -44,12 +44,14 @@ export default class Filter {
          data.forEach((value, key) => {
              params.append(key, value)
              })
-             debugger
+             //debugger
+             return this.loadUrl(url.pathname + '?' + params.toString())
 
          }
 
     async loadUrl(url) {
-      const response = await fetch(url, {
+      const ajaxUrl = url + '&ajax=1'//to stop content in json when doing back
+      const response = await fetch(ajaxUrl, {
         headers: {
             'X-Requested-With': 'XMLHttpRequest'
         }
@@ -58,6 +60,7 @@ export default class Filter {
           const data = await response.json()
             this.content.innerHTML = data.content
             this.sorting.innerHTML = data.sorting
+            this.pagination.innerHTML = data.pagination
             history.replaceState({}, '', url)
         } else {
             console.error(response)
