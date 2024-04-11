@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ContactController extends AbstractController
 {
-    #[Route('/contact', name: 'app_contact')]
+    #[Route('/contact', name: 'contact/index.html.twig')]
     public function index(Request $request, EntityManagerInterface $manager): Response
     {
         $contactForm = new Contact();
@@ -26,12 +26,12 @@ class ContactController extends AbstractController
             $manager->flush();
             //dd($contact);
 
-            $this->addFlash('success', 'Votre message nous a bien été envoyé nous le traiterons dans le plus bref délais merci! :)');
-            return $this->redirectToRoute('app_contact');
+            $this->addFlash('success', 'Votre message nous a bien été envoyé nous le traiterons dans le plus bref délais merci! :) ');
+
+            return $this->redirectToRoute('contact/index.html.twig');
             /*return $this->redirectToRoute('app_contact', [
                 //'form'=>$form,
             ]);*/
-
 
         }
 
@@ -39,5 +39,7 @@ class ContactController extends AbstractController
             'form' => $form->createView(),
             //'controller_name' => 'ContactController',
         ]);
+
     }
+
 }

@@ -39,6 +39,20 @@ class Contact
     {
         $this->createdAt = new \DateTimeImmutable();
     }
+
+
+    /*public function getContact(): string
+    {
+        return $this->contact;
+    }
+    public function setContact($contact){
+        $this->contact = $contact;
+        return $this;
+    }*/
+
+
+
+
     public function isProcessed(): ?bool
     {
         return $this->processed;
