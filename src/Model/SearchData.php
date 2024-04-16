@@ -30,13 +30,20 @@ class SearchData
 
     public float $max;
 
+    //public int $price;
+
+    ##[ORM\Column(type: 'string')]
+    public int $minPrice;
+
+    public int $maxPrice;
+
     public float $km;
 
     public float $minKm;
 
     public float $maxKm;
 
-    public $year;
+    //public $year;
 
     public float $minYear;
 

@@ -29,23 +29,23 @@ import Filter from './styles/modules/Filter'
 new Filter(document.querySelector('.js-filter'))
 
 
-const slider = document.getElementById('slider');
+const priceSlider = document.getElementById('priceSlider');
 
-if(slider) {
-    const min = document.getElementById('search_form_min')
-    const max = document.getElementById('search_form_max')
-    const minValue = Math.floor(parseInt(slider.dataset.min, 10) / 10) * 10
-    const maxValue = Math.ceil(parseInt(slider.dataset.max, 10) / 10) * 10
+if(priceSlider) {
+    const minPrice = document.getElementById('search_form_minPrice')
+    const maxPrice = document.getElementById('search_form_maxPrice')
+    const minPriceValue = Math.floor(parseInt(priceSlider.dataset.min, 10) / 10) * 10
+    const maxPriceValue = Math.ceil(parseInt(priceSlider.dataset.max, 10) / 10) * 10
     const euroPrefixFormat = wNumb({prefix: '€', decimals: 0})
-    const range = noUiSlider.create(slider, {
-        start: [/*1000, 100000 */min.value || minValue, max.value || maxValue],
+    const range = noUiSlider.create(priceSlider, {
+        start: [/*1000, 100000 */minPrice.value || minPriceValue, maxPrice.value || maxPriceValue],
         connect: true,
         //step: 3,
         //decimals: 3,
         thousand: 1,
         //number_format :(2, ',', ','),
         //suffix: '€',
-        tooltips: [euroPrefixFormat, euroPrefixFormat],
+        //tooltips: [euroPrefixFormat, euroPrefixFormat],
         pips: {
 
             format: euroPrefixFormat
@@ -60,17 +60,17 @@ if(slider) {
     range.on('slide', function(values, handle) {
         //console.log(values, handle);
          if(handle === 0){
-             min.value = Math.round(values[0])
+             minPrice.value = Math.round(values[0])
          }
         if(handle === 1){
-            max.value = Math.round(values[1])
+            maxPrice.value = Math.round(values[1])
         }
 
     })
    range.on('end', function(values, handle){
         //min.value = 1
         //minValue.dispatchEvent(new Event('change'))
-       min.dispatchEvent(new Event('change'))
+       minPrice.dispatchEvent(new Event('change',{ bubbles: true }))
     })
 
 //km slider
@@ -90,10 +90,10 @@ if(slider) {
                 'max': /*maxValue  */300000
             },
              // if removed we get the values in the "search_form_km"
-            format : wNumb({
+            /*format : wNumb({
                 decimals:0,
                 suffix:'Km'
-            })
+            })*/
         });
 
         range.on('slide', function(values, handle) {
@@ -107,7 +107,7 @@ if(slider) {
 
         })
         range.on('end', function(values,handle){
-            min.dispatchEvent(new Event('change',{ bubbles: true }))
+            minKm.dispatchEvent(new Event('change',{ bubbles: true }))
 
         })
 
@@ -161,7 +161,7 @@ if(slider) {
 
 
         range.on('end', function(values,handle){
-            min.dispatchEvent(new Event('change',{ bubbles: true }))
+            minYear.dispatchEvent(new Event('change',{ bubbles: true }))
             //if(handle === 1){min.dispatchEvent(new Event('change',))}
 //if(handle === 1){max.dispatchEvent(new Event('change',))}
             //min.dispatchEvent(new Event('change',{ bubbles: true }))

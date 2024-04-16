@@ -37,7 +37,7 @@ class SearchForm extends AbstractType
                 'multiple' => true
             ])
 
-            ->add('min', NumberType::class, [
+            /*->add('min', NumberType::class, [
                 'label' => false,
                 'required' => false,
                 'attr' => [
@@ -50,8 +50,32 @@ class SearchForm extends AbstractType
                 'attr' => [
                     'placeholder' => 'Prix maximum'
                 ]
+            ])*/
+
+        ->add('minPrice', NumberType::class, [
+            'label' => false,
+            'required' => false,
+            'attr' => [
+                'placeholder' => 'Prix minimum'
+            ]
+        ])
+            ->add('maxPrice', NumberType::class, [
+                'label' => false,
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'Prix maximum'
+                ]
             ])
 
+
+
+            /*->add('km', NumberType::class, [
+                'label' => false,
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'Kilometre'
+                ]
+            ])*/
 
             ->add('minKm', NumberType::class, [
             'label' => false,
@@ -67,6 +91,14 @@ class SearchForm extends AbstractType
             'placeholder' => 'Kilometre'
         ]
     ])
+
+           /* ->add('year', NumberType::class, [
+                'label' => false,
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'Année'
+                ]
+            ])*/
 
             ->add('minYear', NumberType::class, [
                 'label' => false,

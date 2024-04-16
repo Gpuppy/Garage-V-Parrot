@@ -9,14 +9,14 @@
 <h4>Prix</h4>
 <div class = "row">
     <div class ="col-md-10">
-        {{ form_row(form.min) }}
+        {{ form_row(form.minPrice) }}
 
     <div class="cold-md-10">
-        {{ form_row(form.max) }}
+        {{ form_row(form.maxPrice) }}
         </div>
     </div>
 </div>
-<div id="slider" class="col-md-6" data-min="{{ min }}" data-max="{{ max }}" style="margin-top: 1rem "></div>
+<div id="priceSlider" class="col-md-6" data-min="{{ min }}" data-max="{{ max }}" style="margin-top: 1rem "></div>
 {#  dump(min, max) }} #}
 
 <h4>Km</h4>

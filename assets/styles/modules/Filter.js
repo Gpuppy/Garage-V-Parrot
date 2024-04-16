@@ -1,10 +1,10 @@
 /**
- *@property {HTMLElement} pagination
+
  *@property {HTMLElement} content
  *@property {HTMLElement} sorting
  *@property {HTMLFormElement} form
  */
-
+//property {HTMLElement} pagination
 export default class Filter {
     /**
     *@param {HTMLElement | null}element
@@ -13,7 +13,7 @@ export default class Filter {
         if(element === null){
             return
         }
-        this.pagination = element.querySelector('.js-filter-pagination')
+        //this.pagination = element.querySelector('.js-filter-pagination')
         this.content = element.querySelector('.js-filter-content')
         this.sorting = element.querySelector('.js-filter-sorting')
         this.form = element.querySelector('.js-filter-form')
@@ -52,15 +52,17 @@ export default class Filter {
     async loadUrl(url) {
       const ajaxUrl = url + '&ajax=1'//to stop content in json when doing back
       const response = await fetch(ajaxUrl, {
+        //method: "POST",
         headers: {
             'X-Requested-With': 'XMLHttpRequest'
-        }
+        },
+
 })
         if(response.status >= 200 && response.status < 300) {
           const data = await response.json()
             this.content.innerHTML = data.content
             this.sorting.innerHTML = data.sorting
-            this.pagination.innerHTML = data.pagination
+            //this.pagination.innerHTML = data.pagination
             history.replaceState({}, '', url)
         } else {
             console.error(response)
