@@ -14,6 +14,12 @@ class Review
     private ?int $id = null;
 
     #[ORM\Column(length: 100)]
+    private string $author;
+
+    #[ORM\Column(length: 100)]
+    private string $email;
+
+    #[ORM\Column(length: 100)]
     private ?string $title = null;
 
     #[ORM\Column(length: 255)]
@@ -22,10 +28,38 @@ class Review
     #[ORM\Column]
     private ?bool $approved = null;
 
+
+
+
     public function getId(): ?int
     {
         return $this->id;
     }
+    
+    public function getAuthor() : ?string
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(string $author) : static
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): static
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+    
 
     public function getTitle(): ?string
     {
