@@ -20,7 +20,7 @@ class ServiceCrudController extends AbstractCrudController
         return Service::class;
     }
 
-    public function configureCrud(Crud $crud): Crud
+    /*public function configureCrud(Crud $crud): Crud
     {
         return $crud
             ->setEntityLabelInPlural('Service')
@@ -29,7 +29,7 @@ class ServiceCrudController extends AbstractCrudController
 
         //->setPageTitle('');
         //->setPaginatorPageSize('10');
-    }
+    }*/
 
 
     public function configureFields(string $pageName): iterable

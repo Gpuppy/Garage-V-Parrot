@@ -28,9 +28,6 @@ class Review
     #[ORM\Column]
     private ?bool $approved = null;
 
-
-
-
     public function getId(): ?int
     {
         return $this->id;
