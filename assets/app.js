@@ -38,7 +38,7 @@ if(priceSlider) {
     const maxPriceValue = Math.ceil(parseInt(priceSlider.dataset.max, 10) / 10) * 10
     const euroPrefixFormat = wNumb({prefix: '€', decimals: 0})
     const range = noUiSlider.create(priceSlider, {
-        start: [/*1000, 100000 */minPrice.value || minPriceValue, maxPrice.value || maxPriceValue],
+        start: [1000, 1000000 /*minPrice.value || minPriceValue, maxPrice.value || maxPriceValue*/],
         connect: true,
         //step: 3,
         //decimals: 3,
@@ -46,13 +46,12 @@ if(priceSlider) {
         //number_format :(2, ',', ','),
         //suffix: '€',
         //tooltips: [euroPrefixFormat, euroPrefixFormat],
-        pips: {
-
+        /*pips: {
             format: euroPrefixFormat
-        },
+        },*/
         range: {
             'min': /*minValue, */1000,
-            'max': /*maxValue  */100000
+            'max': /*maxValue  */1000000
         },
 
     });
@@ -68,9 +67,20 @@ if(priceSlider) {
 
     })
    range.on('end', function(values, handle){
-        //min.value = 1
+        minPrice.dispatchEvent(new Event('change',{ bubbles: true }))
+        maxPrice.dispatchEvent(new Event('change',{ bubbles: true }))
+        //if(handle === 1){min.dispatchEvent(new Event('change',))}
+//if(handle === 1){max.dispatchEvent(new Event('change',))}
+
+        //console.log('Event triggered')
+
+
+        //min.value = 0
         //minValue.dispatchEvent(new Event('change'))
-       minPrice.dispatchEvent(new Event('change',{ bubbles: true }))
+       //minPrice.value = defaultValue
+       //minPrice.dispatchEvent(new Event('change',{ bubbles: true }))
+       //maxPrice.dispatchEvent(new Event('change',{ bubbles: true }))
+
     })
 
 //km slider
@@ -108,6 +118,7 @@ if(priceSlider) {
         })
         range.on('end', function(values,handle){
             minKm.dispatchEvent(new Event('change',{ bubbles: true }))
+            maxKm.dispatchEvent(new Event('change',{ bubbles: true }))
 
         })
 
@@ -162,6 +173,7 @@ if(priceSlider) {
 
         range.on('end', function(values,handle){
             minYear.dispatchEvent(new Event('change',{ bubbles: true }))
+            maxYear.dispatchEvent(new Event('change',{ bubbles: true }))
             //if(handle === 1){min.dispatchEvent(new Event('change',))}
 //if(handle === 1){max.dispatchEvent(new Event('change',))}
             //min.dispatchEvent(new Event('change',{ bubbles: true }))

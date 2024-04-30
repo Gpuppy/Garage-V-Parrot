@@ -59,6 +59,8 @@ class SecondHandCarRepository extends ServiceEntityRepository
     {
         $results = $this->getSearchQuery($search, true)
             ->select('MIN(s.price) as min', 'MAX(s.price) as max')
+            //->select('MIN(s.km) as min', 'MAX(s.km) as max')
+            //->select('MIN(s.year) as min', 'MAX(s.year) as max')
             ->getQuery()
             ->getScalarResult();
         return [(int)$results[0]['min'], (int)$results[0]['max']];
@@ -71,12 +73,12 @@ class SecondHandCarRepository extends ServiceEntityRepository
             ->select('b', 's')
             ->join('s.brand', 'b');
         //return $this->findAll();
-        if(!empty($search->q)) {
+        /*if(!empty($search->q)) {
             $query = $query
                 ->andWhere('s.name LIKE :q')
                 ->setParameter('q', "%{$search->q}%");
-        }
-        if(!empty($search->min) && $ignorePrice === false) {
+        }*/
+        /*if(!empty($search->min) && $ignorePrice === false) {
             $query = $query
                 ->andWhere('s.price >= :min')
                 ->setParameter('min', $search->min);
@@ -85,8 +87,19 @@ class SecondHandCarRepository extends ServiceEntityRepository
             $query = $query
                 ->andWhere('s.price <= :max')
                 ->setParameter('max', $search->max);
+        }*/
+
+        if(!empty($search->minPrice)) {
+            $query = $query
+                ->andWhere('s.price >= :minPrice')
+                ->setParameter('minPrice', $search->minPrice);
         }
 
+        if(!empty($search->maxPrice)) {
+            $query = $query
+                ->andWhere('s.price <= :maxPrice')
+                ->setParameter('maxPrice', $search->maxPrice);
+        }
         /*if(!empty($search->km)) {
             $query = $query
                 ->andWhere('s.km <= :km')
@@ -117,7 +130,7 @@ class SecondHandCarRepository extends ServiceEntityRepository
                 ->setParameter('minYear', $search->minYear);
         }
 
-        if(!empty($search->maxKm)) {
+        if(!empty($search->maxYear)) {
             $query = $query
                 ->andWhere('s.Year <= :maxYear')
                 ->setParameter('maxYear', $search->maxYear);

@@ -1,5 +1,4 @@
 /**
-
  *@property {HTMLElement} content
  *@property {HTMLElement} sorting
  *@property {HTMLFormElement} form
@@ -66,6 +65,7 @@ export default class Filter {
             history.replaceState({}, '', url)
         } else {
             console.error(response)
+
         }
     }
 }

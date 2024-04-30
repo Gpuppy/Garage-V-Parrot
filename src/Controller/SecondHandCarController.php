@@ -53,7 +53,7 @@ class SecondHandCarController extends AbstractController
             'SecondHandCars' => $secondHandCars,
             'form' => $form->createView(),
              'min' => $min,
-             'max' => $max
+             'max' => $max,
              /*'controller_name' => 'SecondHandCarController',*/
             //'SecondHandCars' => $SecondHandCars,
 

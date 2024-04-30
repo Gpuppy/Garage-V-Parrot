@@ -52,6 +52,7 @@ class SearchForm extends AbstractType
                 ]
             ])*/
 
+
         ->add('minPrice', NumberType::class, [
             'label' => false,
             'required' => false,
@@ -81,14 +82,14 @@ class SearchForm extends AbstractType
             'label' => false,
             'required' => false,
             'attr' => [
-                'placeholder' => 'Kilometre'
+                'placeholder' => 'min Kilometre'
             ]
         ])
             ->add('maxKm', NumberType::class, [
         'label' => false,
         'required' => false,
         'attr' => [
-            'placeholder' => 'Kilometre'
+            'placeholder' => 'max Kilometre'
         ]
     ])
 

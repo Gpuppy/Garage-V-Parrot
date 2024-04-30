@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Review;
 use App\Form\ReviewType;
+use App\Repository\ReviewRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,8 +14,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class ReviewController extends AbstractController
 {
     #[Route('/review', name: 'review/index.html.twig')]
-    public function index(Request $request, EntityManagerInterface $manager): Response
+    public function index(Request $request, EntityManagerInterface $manager, ReviewRepository $reviewRepository): Response
     {
+        $reviews = $reviewRepository->findReviews();
         $review = new Review();
         $form = $this->createForm(ReviewType::class, $review );
         $form->handleRequest($request);
@@ -32,7 +34,8 @@ class ReviewController extends AbstractController
         }
         return $this->render('review/index.html.twig', [
             'controller_name' => 'ReviewController',
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'reviews' => $reviews
         ]);
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Home;
 use App\Entity\Review;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -21,10 +22,31 @@ class ReviewRepository extends ServiceEntityRepository
         parent::__construct($registry, Review::class);
     }
 
+    public function findReviews($value)//: array
+    {
+        if($value instanceof Review){
+            $object = 'review';
+        }
+
+        if($value instanceof Home){
+            $object = 'home';
+        }
+
+        return $this->createQueryBuilder('r')
+            ->andWhere('r.' ,$object .'= :val')
+            ->andWhere('r.isApproved = true')
+            ->setParameter('val', $value->getId)
+            ->orderBy('r.id', 'ASC')
+            //->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
 //    /**
 //     * @return Review[] Returns an array of Review objects
 //     */
-//    public function findByExampleField($value): array
+//    public function findByReviews($value): array
 //    {
 //        return $this->createQueryBuilder('r')
 //            ->andWhere('r.exampleField = :val')
