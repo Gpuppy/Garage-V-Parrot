@@ -15,6 +15,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
 {
+    public function __construct(private readonly EntitymanagerInterface $entityManager)
+    {
+
+    }
+
     #[Route('/', name: 'app_home')]
     public function index(): Response
     {
@@ -23,6 +28,15 @@ class HomeController extends AbstractController
         ]);
 
     }
+
+    ##[Route('/reviews', name: 'event_show')]
+    #public function show(/*Review $review,EntityManagerInterface $manager*/ ) : Response
+    /*{
+        $reviews = $this->entityManager->getRepository(Review::class)->findAll();
+        return $this->render('review/reviews.html.twig', [
+            'reviews' => $reviews
+        ]);
+    }*/
 
     /*public function show(Request $request, EntityManagerInterface $manager) : Response
     {

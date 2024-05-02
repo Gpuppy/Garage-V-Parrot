@@ -1,8 +1,32 @@
-<section>
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Hello HomeController!{% endblock %}
+
+
+{% block body %}
+<h1>Avis</h1>
+{#  #}
+
     {% for review in reviews %}
-    {% review.author %}
-    {% review.title %}
-    {% review.content %}
+        <div class = "col pb-2 pb-sm-3 text-center">
+        <div class = " card-hover position-relative bg-light rounded-1 p-3 mb-4">
+
+         <h2>{{ review.author }}</h2>
+        <h3> {{ review.title }}</h3>
+        <h4>{{ review.content }} </h4>
+
+        <!--div class="col-12 col-sm-6 col-lg-5 shadow-lg p-3 mb-5 bg-white rounded bg-light">
+            <div class="col-xl-11 col-xxl-10 mx-auto text-center">
+                <img class="img-fluid rounded rounded-circle mb-4" loading="lazy" src="images/testimonial-img-4.jpg" alt="">
+                <p class="mb-2">Phasellus sem justo, <a href="#!">pretium eu lacus ut</a>, aliquet diam. Morbi sit amet dolor eu erat ornare viverra.</p>
+                <p class="m-0 fw-bold">Luke Reeves - Sales</p>
+            </div>
+        </div-->
+
+        </div>
+        </div>
 
     {% endfor %}
-</section>
+
+{% endblock %}
