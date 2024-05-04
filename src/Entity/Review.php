@@ -8,6 +8,10 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: ReviewRepository::class)]
 class Review
 {
+
+    #[Assert\NotBlank]
+    public string $review;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -26,7 +30,7 @@ class Review
     private ?string $content = null;
 
     #[ORM\Column]
-    private ?bool $approved = null;
+    private bool $approved = false ;
 
     public function getId(): ?int
     {
@@ -82,7 +86,7 @@ class Review
         return $this;
     }
 
-    public function isApproved(): ?bool
+    public function getApproved(): ?bool
     {
         return $this->approved;
     }
@@ -93,4 +97,6 @@ class Review
 
         return $this;
     }
+
+
 }

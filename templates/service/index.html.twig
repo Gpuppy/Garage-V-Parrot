@@ -22,16 +22,17 @@
             <div class = " card-hover position-relative bg-light rounded-1 p-3 mb-4 text-center">
 
                 <div class="card mb-4 rounded-3 shadow-sm">
-                <h5 class=" card-header py-3 text-danger">
+                <h5 class=" card-header py-3 text-danger bg-dark">
                 {{ Service.title }}
                 </h5>
                 </div>
-                    <div class="card-body-image">
+                    <div class="card-body-image img-fluid">
                 <img src="{{ vich_uploader_asset(Service, 'imageFile') }}" width ="350" height = "350"  alt="{{ Service.image }}">
                     </div>
                 <div class="content card mb-3 rounded-3 shadow-sm text-bg-secondary ">
                 {{ Service.content }}
                 </div>
+                <a href="/contact" class="btn btn-info" role="button">Contactez nous</a>
         </div>
         </div>
 

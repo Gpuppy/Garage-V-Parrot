@@ -3,7 +3,9 @@
 namespace App\Form;
 
 use App\Entity\Review;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -21,7 +23,7 @@ class ReviewType extends AbstractType
             ->add('title', TextareaType::class)
             ->add('content', TextareaType::class)
             ->add('submit', SubmitType::class)
-            //->add('approved')
+            //->add('approved', CheckboxType::class)
         ;
     }
 

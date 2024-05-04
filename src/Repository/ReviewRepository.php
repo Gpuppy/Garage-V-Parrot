@@ -24,18 +24,18 @@ class ReviewRepository extends ServiceEntityRepository
 
     public function findReviews($value)//: array
     {
-        if($value instanceof Review){
+        /*if($value instanceof Review){
             $object = 'review';
         }
 
         if($value instanceof Home){
             $object = 'home';
-        }
+        }*/
 
         return $this->createQueryBuilder('r')
-            ->andWhere('r.' ,$object .'= :val')
-            ->andWhere('r.isApproved = true')
-            ->setParameter('val', $value->getId)
+            //->andWhere('r.' . $object .'= :val')
+            ->andWhere('r.approved = true')
+            ->setParameter('val', $value->getId())
             ->orderBy('r.id', 'ASC')
             //->setMaxResults(10)
             ->getQuery()

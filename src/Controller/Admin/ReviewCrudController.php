@@ -26,6 +26,7 @@ class ReviewCrudController extends AbstractCrudController
             TextField::new('title'),
             TextEditorField::new('content'),
             BooleanField::new('approved')
+
         ];
     }
 

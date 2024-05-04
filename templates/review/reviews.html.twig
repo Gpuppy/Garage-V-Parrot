@@ -5,16 +5,19 @@
 
 
 {% block body %}
-<h1>Avis</h1>
+<h3>Commentaires clients</h3>
 {#  #}
 
     {% for review in reviews %}
-        <div class = "col pb-2 pb-sm-3 text-center">
-        <div class = " card-hover position-relative bg-light rounded-1 p-3 mb-4">
+        {% if review.approved %}
+<div class="container justify-content-center">
+        <div class = "col-lg-6 text-left ">
+        <div class = " card-hover position-relative bg-light rounded-2 p-3 mb-4">
+            <i class="fa-regular fa-circle-user fa-2x bg-secondary"></i>
 
-         <h2>{{ review.author }}</h2>
-        <h3> {{ review.title }}</h3>
-        <h4>{{ review.content }} </h4>
+         <h5>{{ review.author }}</h5>
+        <h6> {{ review.title }}</h6>
+        {{ review.content }}
 
         <!--div class="col-12 col-sm-6 col-lg-5 shadow-lg p-3 mb-5 bg-white rounded bg-light">
             <div class="col-xl-11 col-xxl-10 mx-auto text-center">
@@ -26,7 +29,8 @@
 
         </div>
         </div>
-
+</div>
+        {% endif %}
     {% endfor %}
 
 {% endblock %}
