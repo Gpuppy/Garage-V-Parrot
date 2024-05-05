@@ -24,7 +24,7 @@ class SearchData
     ## array
     public array $brands = [];
 
-    public string $price;
+    public int $price;
 
     public float $min;
 
@@ -45,8 +45,8 @@ class SearchData
 
     //public $year;
 
-    public float $minYear;
+    public string $minYear;
 
-    public float $maxYear;
+    public string $maxYear;
 
 }

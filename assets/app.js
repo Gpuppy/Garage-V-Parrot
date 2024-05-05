@@ -38,20 +38,20 @@ if(priceSlider) {
     const maxPriceValue = Math.ceil(parseInt(priceSlider.dataset.max, 10) / 10) * 10
     const euroPrefixFormat = wNumb({prefix: '€', decimals: 0})
     const range = noUiSlider.create(priceSlider, {
-        start: [1000, 1000000 /*minPrice.value || minPriceValue, maxPrice.value || maxPriceValue*/],
+        start: [1000, 10000000 /*minPrice.value || minPriceValue, maxPrice.value || maxPriceValue*/],
         connect: true,
         //step: 3,
         //decimals: 3,
         thousand: 1,
-        //number_format :(2, ',', ','),
-        //suffix: '€',
+        number_format :(2, ',', ','),
+        suffix: '€',
         //tooltips: [euroPrefixFormat, euroPrefixFormat],
         /*pips: {
             format: euroPrefixFormat
         },*/
         range: {
             'min': /*minValue, */1000,
-            'max': /*maxValue  */1000000
+            'max': /*maxValue  */10000000
         },
 
     });
@@ -137,12 +137,17 @@ if(priceSlider) {
         const maxYear = document.getElementById('search_form_maxYear')
         const range = noUiSlider.create(yearSlider, {
             // Two more timestamps indicate the handle starting positions.
-            start: [timestamp('2009'), timestamp('2024')],
+            //start: [timestamp('2009'), timestamp('2024')],
+            start: [2009, 2024],
             connect: true,
             //step: 7 * 24 * 60 * 60 * 1000,
+            /*range: {
+                min: timestamp('2010'),
+                max: timestamp('2025')
+            },*/
             range: {
-                min: timestamp('2009'),
-                max: timestamp('2024')
+                min: 2010,
+                max: 2025
             },
             format: wNumb({
                 decimals: 0
@@ -154,7 +159,6 @@ if(priceSlider) {
 
         });
 
-        //Custom Tooltip Formatting function for year display
 
         function yearFormat(value) {
             return new Date(+value).getFullYear().toString();
