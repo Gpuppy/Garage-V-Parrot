@@ -8,3 +8,8 @@ body {
     width: 800px;
 }
 
+.noUi-handle {
+    width: 10px !important;
+    right: -5px !important; /*  must be (width / 2) * -1 */
+    background: #AA00AA;
+}

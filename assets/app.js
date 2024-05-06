@@ -45,7 +45,7 @@ if(priceSlider) {
         thousand: 1,
         number_format :(2, ',', ','),
         suffix: '€',
-        //tooltips: [euroPrefixFormat, euroPrefixFormat],
+        tooltips: [euroPrefixFormat, euroPrefixFormat],
         /*pips: {
             format: euroPrefixFormat
         },*/
@@ -137,18 +137,18 @@ if(priceSlider) {
         const maxYear = document.getElementById('search_form_maxYear')
         const range = noUiSlider.create(yearSlider, {
             // Two more timestamps indicate the handle starting positions.
-            //start: [timestamp('2009'), timestamp('2024')],
-            start: [2009, 2024],
+            start: [timestamp('2000'), timestamp('2024')],
+            //start: [1266137081781,1704067200000],
             connect: true,
             //step: 7 * 24 * 60 * 60 * 1000,
-            /*range: {
-                min: timestamp('2010'),
-                max: timestamp('2025')
-            },*/
             range: {
-                min: 2010,
-                max: 2025
+                min: timestamp('2001'),
+                max: timestamp('2025')
             },
+            /*range: {
+                min: 1266137081781,
+                max: 1704067200000
+            },*/
             format: wNumb({
                 decimals: 0
             }),

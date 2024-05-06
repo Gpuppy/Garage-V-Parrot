@@ -2,46 +2,87 @@
 
 <!--h4>Model</h4-->
  {#  { form_row(form.q) }#}
+<!--div class = "row row-cols-1 row-cols-md-3 mb-3"--->
 
+    <!--div class="row align-items-center "--->
+
+<div class="container align-items-center me-0">
+    <div class="row align-items-center ">
+
+        <div class="col-md-1 ms-0 me-0">
+        <h4>Model</h4>
+        {{ form_row(form.brands) }}
+        </div>
+
+        <div class="col">
+            <h4>Prix</h4>
+            <div id="priceSlider" class="col-md-9 mt-5" data-min="{{ min }}" data-max="{{ max }}" style="margin-top: 1rem "></div>
+        </div>
+        <div class="col">
+            <h4>Km</h4>
+            <div id="kmSlider" class="col-md-9 mt-5" data-min="{{ min }}" data-max="{{ max }}"></div>
+        </div>
+        <div class="col">
+            <h4>Année</h4>
+            <div id="yearSlider" class="col-md-9 mt-5" data-min="{{ min }}" data-max="{{ max }}"></div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!---div class = "col">
 <h4>Marques</h4>
-{{ form_row(form.brands) }}
+{# {{ form_row(form.brands) }} #}
 
-<h4>Prix</h4>
-<div class = "row">
-    <div class ="col-md-10">
-        {{ form_row(form.minPrice) }}
+   </div-->
+
+    <!--div class = "col-md-10">
+<h4>Prix</h4-->
+
+    <!--div class ="col-md-10">
+        {#  {{ form_row(form.minPrice) }}
 
     <div class="cold-md-10">
-        {{ form_row(form.maxPrice) }}
+        {{ form_row(form.maxPrice) }}  #}
         </div>
-    </div>
-</div>
-<div id="priceSlider" class="col-md-6" data-min="{{ min }}" data-max="{{ max }}" style="margin-top: 1rem "></div>
+    </div-->
+
+<!--div id="priceSlider" class="col-md-6" data-min=" {# {{ min }}" data-max="{{ max }} #}" style="margin-top: 1rem "></div>
 {#  dump(min, max) }} #}
+    </div-->
 
-<h4>Km</h4>
-<div class = "row ms-10">
-    <div class ="col-md-10">
-        {{ form_row(form.minKm) }}
+    <!--div class = "col-md-10">
+<h4>Km</h4--->
+<!--div class = "row ms-10"-->
+    <!--div class ="col-md-10">
+       {#  {{ form_row(form.minKm) }}
 
-        <div class="cold-md-4">
-            {{ form_row(form.maxKm) }}
+        <div class="col-md-4">
+            {{ form_row(form.maxKm) }} #}
         </div>
+    </div-->
+<!--/div--->
+<!---div id="kmSlider" class="col-md-6" data-min="{# { min }}" data-max="{{ max }}#}"></div>
     </div>
-</div>
-<div id="kmSlider" class="col-md-6" data-min="{{ min }}" data-max="{{ max }}"></div>
 
-<h4>Année</h4>
-<div class = "row">
-    <div class ="col-md-10">
-        {{ form_row(form.minYear) }}
+    <div class = "col-md-10">
+<h4>Année</h4---->
+
+    <!--div class ="col-md-10">
+       {#  {{ form_row(form.minYear) }}
 
         <div class="cold-md-10">
-            {{ form_row(form.maxYear) }}
-        </div>
-        <div id="yearSlider" class="col-md-6" data-min="{{ min }}" data-max="{{ max }}"></div>
+            {{ form_row(form.maxYear) }} #}
+        </div-->
+        <!---div id="yearSlider" class="col-md-6" data-min="{# {{ min }}" data-max="{{ max }} #}"></div>
     </div>
    </div>
+</div---->
+
+
+
 
 <!--button type="submit" class="btn btn-primary">Filtrer</button-->
-{{ form_end(form) }}
+{# {{ form_end(form) }} #}

@@ -5,9 +5,9 @@
 {% block body %}
 
     <!---search bar--->
-    <div class="container js-filter ">
-    <div class="row">
-        <div class = "col-md-3 ">
+    <div class="container js-filter">
+    <div class="row ms-0">
+        <div class="justify-content-end mb-2 js-filter-sorting">
         {% include 'second_hand_car/_filter.html.twig' with {form: form , min: min, max: max } only %}
 
     <!--/form-->
