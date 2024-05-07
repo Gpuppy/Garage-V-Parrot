@@ -40,7 +40,7 @@ if(priceSlider) {
     const range = noUiSlider.create(priceSlider, {
         start: [1000, 10000000 /*minPrice.value || minPriceValue, maxPrice.value || maxPriceValue*/],
         connect: true,
-        //step: 3,
+        step: 3,
         //decimals: 3,
         thousand: 1,
         number_format :(2, ',', ','),
@@ -137,13 +137,13 @@ if(priceSlider) {
         const maxYear = document.getElementById('search_form_maxYear')
         const range = noUiSlider.create(yearSlider, {
             // Two more timestamps indicate the handle starting positions.
-            start: [timestamp('2000'), timestamp('2024')],
+            start: [timestamp('2001'), timestamp('2024')],
             //start: [1266137081781,1704067200000],
             connect: true,
             //step: 7 * 24 * 60 * 60 * 1000,
             range: {
                 min: timestamp('2001'),
-                max: timestamp('2025')
+                max: timestamp('2024')
             },
             /*range: {
                 min: 1266137081781,

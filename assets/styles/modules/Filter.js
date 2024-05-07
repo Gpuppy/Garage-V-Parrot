@@ -1,9 +1,10 @@
 /**
  *@property {HTMLElement} content
- *@property {HTMLElement} sorting
+ *
  *@property {HTMLFormElement} form
  */
 //property {HTMLElement} pagination
+//@property {HTMLElement} sorting
 export default class Filter {
     /**
     *@param {HTMLElement | null}element
@@ -14,7 +15,7 @@ export default class Filter {
         }
         //this.pagination = element.querySelector('.js-filter-pagination')
         this.content = element.querySelector('.js-filter-content')
-        this.sorting = element.querySelector('.js-filter-sorting')
+        //this.sorting = element.querySelector('.js-filter-sorting')
         this.form = element.querySelector('.js-filter-form')
         this.bindEvents()
        console.log('loading in progress')
@@ -24,13 +25,13 @@ export default class Filter {
      * adds behavings to different elements
      */
     bindEvents() {
-        this.sorting.addEventListener('click', e => {
+        /*this.sorting.addEventListener('click', e => {
             if(e.target.tagName === 'A')!
                 e.preventDefault()
             this.loadUrl(e.target.getAttribute('href'))
                 /*this.loadUrl(a.getAttribute('href'))
-            })*/
-        })
+            })
+        })*/
         this.form.querySelectorAll('input').forEach(input => {
             input.addEventListener('change', this.loadForm.bind(this))
         })
@@ -60,7 +61,7 @@ export default class Filter {
         if(response.status >= 200 && response.status < 300) {
           const data = await response.json()
             this.content.innerHTML = data.content
-            this.sorting.innerHTML = data.sorting
+            //this.sorting.innerHTML = data.sorting
             //this.pagination.innerHTML = data.pagination
             history.replaceState({}, '', url)
         } else {

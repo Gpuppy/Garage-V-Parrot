@@ -12,9 +12,9 @@
                 <!--/div-->
                 <h3>{{ SecondHandCar.brand }}</h3>
                 <h4>{{ SecondHandCar.km }} km </h4>
-                <h5>{{ (SecondHandCar.price) }} € </h5>
-                <!--h5>{#  { (SecondHandCar.price / 100) | number_format (2, '.', ',') }#}#} € </h5-->
-                <h6>{{ SecondHandCar.year()|date('d-m-Y')}} </h6>
+                {#<h5>{{ (SecondHandCar.price) }} € </h5>#}
+                <h5> {{ (SecondHandCar.price / 100) }}  € </h5>
+                <!--h6>{# {{ SecondHandCar.year()|date('d-m-Y')}} #} </h6---->
 
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#Modal">

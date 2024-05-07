@@ -45,8 +45,8 @@ class SearchData
 
     //public $year;
 
-    public string $minYear;
+    public int $minYear;
 
-    public string $maxYear;
+    public int $maxYear;
 
 }

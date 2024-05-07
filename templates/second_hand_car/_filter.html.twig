@@ -16,15 +16,37 @@
 
         <div class="col">
             <h4>Prix</h4>
+            <div class ="col-md-4">
+         {{ form_row(form.minPrice) }}
+    <div class="cold-md-4">
+        {{ form_row(form.maxPrice) }}
+        </div>
+    </div>
             <div id="priceSlider" class="col-md-9 mt-5" data-min="{{ min }}" data-max="{{ max }}" style="margin-top: 1rem "></div>
         </div>
+
         <div class="col">
             <h4>Km</h4>
+            <div class ="col-md-4">
+       {{ form_row(form.minKm) }}
+
+        <div class="col-md-12">
+            {{ form_row(form.maxKm) }}
+        </div>
+    </div>
             <div id="kmSlider" class="col-md-9 mt-5" data-min="{{ min }}" data-max="{{ max }}"></div>
         </div>
+
         <div class="col">
             <h4>Année</h4>
-            <div id="yearSlider" class="col-md-9 mt-5" data-min="{{ min }}" data-max="{{ max }}"></div>
+            <div class ="col-md-4">
+       {{ form_row(form.minYear) }}
+
+        <div class="col-md-12 ">
+            {{ form_row(form.maxYear) }}
+        </div>
+            </div>
+            <div id="yearSlider" class="col-md-10 mt-5" data-min="{{ min }}" data-max="{{ max }}"></div>
         </div>
     </div>
 </div>
