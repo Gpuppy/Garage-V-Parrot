@@ -6,6 +6,7 @@ use App\Entity\Service;
 use Doctrine\Tests\Models\Cache\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
@@ -39,7 +40,9 @@ class ServiceCrudController extends AbstractCrudController
             TextField::new('title'),
             TextEditorField::new('content'),
             TextField::new('imageFile')->setFormType(VichImageType::class)->onlyWhenCreating(),
-            ImageField::new('image')->setBasePath('images/uploads')->onlyOnIndex()
+            ImageField::new('image')->setBasePath('images/uploads')->onlyOnIndex(),
+            DateField::new('createdAt'),
+            DateField::new('updatedAt')
             /*IntegerField::new('services')->setPermission('ROLE_SUPER_ADMIN')*/
 
         ];
