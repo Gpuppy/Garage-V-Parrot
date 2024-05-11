@@ -3,10 +3,10 @@
         <!--just added>
         <div class="js-filter-content"-->
     {% for SecondHandCar in SecondHandCars %}
-        <div class = "col pb-2 pb-sm-3 text-center">
-            <div class = " card-hover position-relative bg-light rounded-1 p-3 mb-4 h-100">
+        <div class = "col pb-2 pb-sm-3 text-center ">
+            <div class = "card-hover position-relative bg-light rounded-1 p-3 mb-4 h-100 ">
 
-                <img src="{{ vich_uploader_asset(SecondHandCar, 'imageFile') }}" {# width ="300" height = "300" #} class="img-fluid" alt="{{ SecondHandCar.image }}">
+                <img src="{{ vich_uploader_asset(SecondHandCar, 'imageFile') }}"   {# width ="300" height = "300" #} class="img-fluid img-thumbnail pb-2" alt="{{ SecondHandCar.image }}">
 
                 <h2>{{ SecondHandCar.name }}</h2>
                 <!--/div-->

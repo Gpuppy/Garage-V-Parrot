@@ -45,7 +45,7 @@ class SecondHandCarController extends AbstractController
             return new JsonResponse([
                 'content' => $this->renderView('second_hand_car/_second_hand_cars.html.twig', ['SecondHandCars' => $secondHandCars]),
                 'sorting' => $this->renderView('second_hand_car/_sorting.html.twig', ['SecondHandCars' => $secondHandCars]),
-                //'pagination' => $this->renderView('second_hand_car/_pagination.html.twig', ['SecondHandCars' => $secondHandCars])
+                'pagination' => $this->renderView('second_hand_car/_pagination.html.twig', ['SecondHandCars' => $secondHandCars])
             ]);
         }
 

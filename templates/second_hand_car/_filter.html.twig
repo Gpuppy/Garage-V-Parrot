@@ -10,23 +10,24 @@
     <div class="row align-items-center ">
 
         <div class="col-md-1 ms-0 me-0">
-        <h4>Model</h4>
+        <h3>Model</h3>
         {{ form_row(form.brands) }}
         </div>
 
         <div class="col">
-            <h4>Prix</h4>
+            <!--h3>Prix</h3--->
             <div class ="col-md-4">
          {{ form_row(form.minPrice) }}
     <div class="cold-md-4">
         {{ form_row(form.maxPrice) }}
         </div>
     </div>
+            <h3>Prix</h3>
             <div id="priceSlider" class="col-md-9 mt-5" data-min="{{ min }}" data-max="{{ max }}" style="margin-top: 1rem "></div>
         </div>
 
         <div class="col">
-            <h4>Km</h4>
+            <!---h3>Km</h3--->
             <div class ="col-md-4">
        {{ form_row(form.minKm) }}
 
@@ -34,11 +35,12 @@
             {{ form_row(form.maxKm) }}
         </div>
     </div>
+            <h3>Km</h3>
             <div id="kmSlider" class="col-md-9 mt-5" data-min="{{ min }}" data-max="{{ max }}"></div>
         </div>
 
         <div class="col">
-            <h4>Année</h4>
+            <!---h3>Année</h3---->
             <div class ="col-md-4">
        {{ form_row(form.minYear) }}
 
@@ -46,6 +48,7 @@
             {{ form_row(form.maxYear) }}
         </div>
             </div>
+            <h3>Année</h3>
             <div id="yearSlider" class="col-md-10 mt-5" data-min="{{ min }}" data-max="{{ max }}"></div>
         </div>
     </div>

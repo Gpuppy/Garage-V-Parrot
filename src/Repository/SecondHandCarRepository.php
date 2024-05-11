@@ -9,6 +9,7 @@ use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 use Knp\Component\Pager\Pagination\PaginationInterface;
+//use Doctrine\ORM\Tools\Pagination\Paginator;
 use Knp\Component\Pager\Paginator;
 use Knp\Component\Pager\PaginatorInterface;
 
@@ -25,9 +26,7 @@ use Knp\Component\Pager\PaginatorInterface;
 class SecondHandCarRepository extends ServiceEntityRepository
 {
 
-    /**
-     * @var PaginatorInterface
-     */
+
     private $paginator;
     public function __construct(ManagerRegistry $registry, PaginatorInterface $paginator)
     {
@@ -35,6 +34,14 @@ class SecondHandCarRepository extends ServiceEntityRepository
         $this->paginator = $paginator;
     }
 
+    public function paginateSecondHandCars(int $page, int $limit): PaginationInterface
+    {
+        return $this->paginator->paginate(
+            $this-> createQueryBuilder('s'),
+            $page,
+            $limit
+        );
+    }
 
     /**
      * get products with search
@@ -46,7 +53,7 @@ class SecondHandCarRepository extends ServiceEntityRepository
         return $this->paginator->paginate(
             $query,
             $search->page,
-            15
+            9
         );    /*return $query->getQuery()->getResult();*/
     }
 

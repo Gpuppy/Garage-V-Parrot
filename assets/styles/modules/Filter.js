@@ -1,6 +1,6 @@
 /**
  *@property {HTMLElement} content
- *
+ *@property {HTMLElement} pagination
  *@property {HTMLFormElement} form
  */
 //property {HTMLElement} pagination
@@ -13,7 +13,7 @@ export default class Filter {
         if(element === null){
             return
         }
-        //this.pagination = element.querySelector('.js-filter-pagination')
+        this.pagination = element.querySelector('.js-filter-pagination')
         this.content = element.querySelector('.js-filter-content')
         //this.sorting = element.querySelector('.js-filter-sorting')
         this.form = element.querySelector('.js-filter-form')
@@ -62,7 +62,7 @@ export default class Filter {
           const data = await response.json()
             this.content.innerHTML = data.content
             //this.sorting.innerHTML = data.sorting
-            //this.pagination.innerHTML = data.pagination
+            this.pagination.innerHTML = data.pagination
             history.replaceState({}, '', url)
         } else {
             console.error(response)

@@ -14,3 +14,38 @@ body {
     background: #AA00AA;
 }
 
+.card-hover
+{
+    transition: all 0.3s;
+
+}
+
+.card-hover:hover
+{
+    transform:scale(1.15);
+
+}
+
+.card-hover-body
+{
+    display:flex;
+    height: 100%;
+    flex-direction: column ;
+}
+
+.card-hover-text
+{
+    flex-grow: 1;
+}
+
+.img-fluid
+{
+    width:100%;
+    max-height: 300px ;
+}
+
+.form-control
+{
+    visibility:hidden;
+    opacity: 0;
+}
