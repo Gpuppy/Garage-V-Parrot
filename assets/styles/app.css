@@ -38,13 +38,14 @@ body {
     flex-grow: 1;
 }
 
-.img-fluid
+/*.img-fluid
 {
     width:100%;
     max-height: 300px ;
-}
+}*/
 
-.form-control
+
+/*.form-control*/#search_form_minPrice, #search_form_maxPrice, #search_form_minKm, #search_form_maxKm, #search_form_minYear, #search_form_maxYear
 {
     visibility:hidden;
     opacity: 0;

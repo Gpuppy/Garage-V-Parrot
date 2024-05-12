@@ -4,9 +4,12 @@ namespace App\Controller\Admin;
 
 use App\Entity\OpeningHours;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TimeField;
+use Symfony\Polyfill\Intl\Icu\DateFormat\DayOfWeekTransformer;
 
 class OpeningHoursCrudController extends AbstractCrudController
 {
@@ -15,14 +18,17 @@ class OpeningHoursCrudController extends AbstractCrudController
         return OpeningHours::class;
     }
 
-    /*
+
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
+            //IdField::new('id'),
+            //TextField::new('title'),
+            //TextEditorField::new('description'),
+            DateField::new('day'),
+            TimeField::new('openingHours'),
+            TimeField::new('closingHours')
         ];
     }
-    */
+
 }
