@@ -37,11 +37,11 @@ class SearchData
 
     public int $maxPrice;
 
-    public float $km;
+    public int $km;
 
-    public float $minKm;
+    public int $minKm;
 
-    public float $maxKm;
+    public int $maxKm;
 
     //public $year;
 

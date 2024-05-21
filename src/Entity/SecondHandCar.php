@@ -27,7 +27,7 @@ class SecondHandCar
     private ?string $km = null;
 
     #[ORM\Column]
-    private /*?float*/ int $price /*= null*/;
+    private int $price;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $year = null;
@@ -119,35 +119,7 @@ class SecondHandCar
         $this->km = $km;
 
         return $this;
-
-}
-
-    /*public function getMinKm(): ?int
-    {
-        return $this->km;
     }
-
-    public function setMinKm(string $km): static
-    {
-        $this->km = $km;
-
-        return $this;
-
-    }
-
-    public function getMaxKm(): ?int
-    {
-        return $this->km;
-    }
-
-    public function setMaxKm(string $km): static
-    {
-        $this->km = $km;
-
-        return $this;
-
-    }*/
-
 
 
     public function getPrice(): ?int

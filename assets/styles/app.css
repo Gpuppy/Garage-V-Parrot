@@ -14,11 +14,12 @@ body {
     background: #AA00AA;
 }
 
-.card-hover
+/*.card-hover
 {
     transition: all 0.3s;
 
 }
+
 
 .card-hover:hover
 {
@@ -36,7 +37,7 @@ body {
 .card-hover-text
 {
     flex-grow: 1;
-}
+}*/
 
 /*.img-fluid
 {
