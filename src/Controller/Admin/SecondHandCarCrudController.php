@@ -30,7 +30,7 @@ class SecondHandCarCrudController extends AbstractCrudController
             TextField::new('name'),
             AssociationField::new('brand'),
             NumberField::new('km'),
-            DateTimeField::new('year'),
+            DateTimeField::new('year')->setFormat('yyyy-MM-dd'),
             MoneyField::new('price')->setCurrency('EUR'),
             TextEditorField::new('description'),
             TextField::new('imageFile')->setFormType(VichImageType::class)->onlyWhenCreating(),

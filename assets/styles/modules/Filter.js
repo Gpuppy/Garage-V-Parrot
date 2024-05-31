@@ -18,7 +18,7 @@ export default class Filter {
         //this.sorting = element.querySelector('.js-filter-sorting')
         this.form = element.querySelector('.js-filter-form')
         this.bindEvents()
-       console.log('loading in progress')
+       //console.log('loading in progress')
     }
 
     /**

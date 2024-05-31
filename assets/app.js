@@ -38,7 +38,7 @@ if(priceSlider) {
     const maxPriceValue = Math.ceil(parseInt(priceSlider.dataset.max, 10) / 10) * 10
     const euroPrefixFormat = wNumb({prefix: '€', decimals: 0})
     const range = noUiSlider.create(priceSlider, {
-        start: [1000, 100000 /*minPrice.value || minPriceValue, maxPrice.value || maxPriceValue*/],
+        start: [1000, 10000000 /*minPrice.value || minPriceValue, maxPrice.value || maxPriceValue*/],
         connect: true,
         step: 3,
         //decimals: 3,
@@ -51,7 +51,7 @@ if(priceSlider) {
         },*/
         range: {
             'min': /*minValue, */1000,
-            'max': /*maxValue  */100000
+            'max': /*maxValue  */10000000
         },
 
     });
@@ -73,13 +73,6 @@ if(priceSlider) {
 //if(handle === 1){max.dispatchEvent(new Event('change',))}
 
         //console.log('Event triggered')
-
-
-        //min.value = 0
-        //minValue.dispatchEvent(new Event('change'))
-       //minPrice.value = defaultValue
-       //minPrice.dispatchEvent(new Event('change',{ bubbles: true }))
-       //maxPrice.dispatchEvent(new Event('change',{ bubbles: true }))
 
     })
 
@@ -137,13 +130,16 @@ if(priceSlider) {
         const maxYear = document.getElementById('search_form_maxYear')
         const range = noUiSlider.create(yearSlider, {
             // Two more timestamps indicate the handle starting positions.
-            start: [timestamp('2001'), timestamp('2024')],
+            //start: [timestamp('2001-01-01'), timestamp('2024-12-30')],
+            start: [timestamp('2015-01-01'),timestamp('2024-12-30')],
             //start: [1266137081781,1704067200000],
             connect: true,
             //step: 7 * 24 * 60 * 60 * 1000,
             range: {
-                min: timestamp('2001'),
-                max: timestamp('2024')
+                //min: timestamp('2001-01-01'),
+                //max: timestamp('2024-12-30')
+                min: timestamp('2015-01-01'),
+                max: timestamp('2024-12-30')
             },
             /*range: {
                 min: 1266137081781,
@@ -152,7 +148,7 @@ if(priceSlider) {
             format: wNumb({
                 decimals: 0
             }),
-            step: 7 * 24 * 60 * 60 * 1000,
+            step: 1,
             tooltips: {
                 to:yearFormat // customtooltip formatting function for displaying years
             }
