@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\OpeningHoursRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: OpeningHoursRepository::class)]
@@ -12,55 +13,48 @@ class OpeningHours
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-    private ?\DateTimeInterface $day;
-    #[ORM\Column(type: 'datetime', nullable: true)]
-    private ?\DateTimeImmutable $openingHours;
-    private ?\DateTimeImmutable $closingHours;
+    #[ORM\Column(length: 100)]
+    private ?string $dayOfWeek;
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $timeOpen = null ;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $timeClose = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /*public function getTitle():
+    public function getDayOfWeek(): ?string
     {
-        return $this->title;
+        return $this->dayOfWeek;
     }
-    public function setTitle():
+    public function setDayOfWeek($dayOfWeek): self
     {
-
-
-    }*/
-
-    public function getDay(): ?\DateTimeInterface
-    {
-        return $this->day;
-    }
-    public function setDay(\DateTimeImmutable $day): self
-    {
-        $this->day = $day;
+        $this->dayOfWeek = $dayOfWeek;
 
         return $this;
     }
 
-    public function getOpeningHours(): ?\DateTimeImmutable
+    public function getTimeOpen(): ?\DateTimeInterface
     {
-        return $this->openingHours;
+        return $this->timeOpen;
     }
-    public function setOpeningHours(\DateTimeImmutable $openingHours): self
+    public function setTimeOpen(\DateTimeImmutable $timeOpen): self
     {
-        $this->openingHours = $openingHours;
+        $this->timeOpen = $timeOpen;
 
         return $this;
     }
 
-    public function getClosingHours(): ?\DateTimeImmutable
+    public function getTimeClose(): \DateTimeInterface
     {
-        return $this->closingHours;
+        return $this->timeClose;
     }
-    public function setClosingHours(\DateTimeImmutable $closingHours): self
+    public function setTimeClose(?\DateTimeImmutable $timeClose): self
     {
-        $this->closingHours = $closingHours;
+        $this->timeClose = $timeClose;
 
         return $this;
     }

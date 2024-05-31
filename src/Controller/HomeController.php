@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Home;
 
+use App\Entity\OpeningHours;
 use App\Entity\Review;
 use App\Form\ReviewType;
 //use http\Env\Request;
@@ -27,6 +28,15 @@ class HomeController extends AbstractController
             'controller_name' => 'HomeController',
         ]);
 
+    }
+
+    #[Route('/horaires', name: 'app_opening_hours')]
+    public function show(Request $request, EntityManagerInterface $manager) : Response
+    {
+        $OpeningHours = $this->entityManager->getRepository(OpeningHours::class)->findAll();
+        return $this->render('opening_hours/index.html.twig', [
+            'OpeningHours' => $OpeningHours
+        ]);
     }
 
     ##[Route('/reviews', name: 'event_show')]

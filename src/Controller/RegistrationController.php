@@ -41,6 +41,14 @@ class RegistrationController extends AbstractController
                 )
             );
 
+            // hash the password (based on the security.yaml config for the $user class)
+        //$hashedPassword = $passwordHasher->hashPassword(
+            //$user,
+            //$plaintextPassword);
+
+        //$user->setPassword($hashedPassword);
+
+
             $entityManager->persist($user);
             $entityManager->flush();
 

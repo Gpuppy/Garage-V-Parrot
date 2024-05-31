@@ -25,9 +25,9 @@ class OpeningHoursCrudController extends AbstractCrudController
             //IdField::new('id'),
             //TextField::new('title'),
             //TextEditorField::new('description'),
-            DateField::new('day'),
-            TimeField::new('openingHours'),
-            TimeField::new('closingHours')
+            TextField::new('dayOfWeek'),
+            TimeField::new('timeOpen'),
+            TimeField::new('timeClose')
         ];
     }
 
