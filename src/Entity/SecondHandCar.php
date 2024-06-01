@@ -7,7 +7,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
-/*use Vich\UploaderBundle\Entity\File;*/
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 
@@ -32,7 +31,7 @@ class SecondHandCar
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $year = null;
 
-    #[ORM\ManyToOne(inversedBy: 'SecondHandCar')]
+    #[ORM\OneToOne(inversedBy: 'SecondHandCar')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Brand $brand = null;
 
@@ -55,7 +54,6 @@ class SecondHandCar
     {
 
     }
-
 
     public function getImage(): ?string
     {
