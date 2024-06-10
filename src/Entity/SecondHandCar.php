@@ -31,7 +31,7 @@ class SecondHandCar
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $year = null;
 
-    #[ORM\OneToOne(inversedBy: 'SecondHandCar')]
+    #[ORM\ManyToOne(inversedBy: 'SecondHandCar')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Brand $brand = null;
 
