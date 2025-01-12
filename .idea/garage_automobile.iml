@@ -167,6 +167,12 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/cloudinary/cloudinary_php" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/cloudinary/transformation-builder-sdk" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/ux-toggle-password" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/jean85/pretty-package-versions" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/mongodb/mongodb" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/mongodb-odm-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/mongodb-odm" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/friendsofphp/proxy-manager-lts" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/laminas/laminas-code" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
