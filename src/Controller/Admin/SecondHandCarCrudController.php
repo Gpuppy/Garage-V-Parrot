@@ -2,6 +2,10 @@
 
 namespace App\Controller\Admin;
 
+//use App\Document\User1; // Example MongoDB document
+//use App\Document\SecondHandCar; // Example MongoDB document
+//use Doctrine\ODM\MongoDB\DocumentManager;
+
 use App\Entity\SecondHandCar;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -18,6 +22,7 @@ use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class SecondHandCarCrudController extends AbstractCrudController
 {
+
     public static function getEntityFqcn(): string
     {
         return SecondHandCar::class;
@@ -40,4 +45,43 @@ class SecondHandCarCrudController extends AbstractCrudController
         ];
     }
 
+    /*private DocumentManager $documentManager;
+
+    public function __construct(DocumentManager $documentManager)
+    {
+        $this->documentManager = $documentManager;
+    }
+
+    public function updateEntity($entityInstance): void
+    {
+        $this->documentManager->flush();
+    }
+
+    public function deleteEntity($entityInstance): void
+    {
+        $this->documentManager->remove($entityInstance);
+        $this->documentManager->flush();
+    }
+
+    public function customMongoDBOperation(Request $request): Response
+    {
+        // Example MongoDB operation
+        $secondHandCar = new SecondHandCar();
+        $secondHandCar->setName();
+        $secondHandCar->setEmail();
+        $secondHandCar->setBrand();
+        $secondHandCar->setKm();
+        $secondHandCar->setYear();
+        $secondHandCar->setPrice();
+        $secondHandCar->setDescription();
+        $secondHandCar->setCreatedAt();
+        $secondHandCar->setUpdatedAt();
+
+        // Persist and flush the user document to MongoDB
+        $this->documentManager->persist($secondHandCar);
+        $this->documentManager->flush();
+
+        return new Response('MongoDB operation completed successfully.');
+    }
+*/
 }

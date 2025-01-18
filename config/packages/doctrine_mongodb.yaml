@@ -1,0 +1,16 @@
+doctrine_mongodb:
+  connections:
+    default:
+      server: '%env(MONGODB_URL)%'
+      options: {}
+  default_database: cluster0.mz4dm.mongodb.net
+  document_managers:
+    default:
+      auto_mapping: true
+      mappings:
+        App:
+          is_bundle: false
+          type: attribute
+          dir: '%kernel.project_dir%/src/Document'
+          prefix: 'App\Document'
+          alias: App
