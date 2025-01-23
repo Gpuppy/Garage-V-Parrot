@@ -21,6 +21,9 @@ class OpeningHours
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $timeClose = null;
 
+    #[ORM\Column]
+    private ?int $userId = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,5 +62,16 @@ class OpeningHours
         return $this;
     }
 
+    public function getUserId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function setUserId(int $userId): self
+    {
+        $this->userId = $userId;
+
+        return $this;
+    }
 
 }

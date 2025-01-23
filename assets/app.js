@@ -43,7 +43,7 @@ if(priceSlider) {
         step: 3,
         //decimals: 3,
         thousand: 1,
-        number_format :(2, ',', ','),
+        number_format: (2, ',', ','),
         suffix: '€',
         tooltips: [euroPrefixFormat, euroPrefixFormat],
         /*pips: {
@@ -56,19 +56,19 @@ if(priceSlider) {
 
     });
 
-    range.on('slide', function(values, handle) {
+    range.on('slide', function (values, handle) {
         //console.log(values, handle);
-         if(handle === 0){
-             minPrice.value = Math.round(values[0])
-         }
-        if(handle === 1){
+        if (handle === 0) {
+            minPrice.value = Math.round(values[0])
+        }
+        if (handle === 1) {
             maxPrice.value = Math.round(values[1])
         }
 
     })
-   range.on('end', function(values, handle){
-        minPrice.dispatchEvent(new Event('change',{ bubbles: true }))
-        maxPrice.dispatchEvent(new Event('change',{ bubbles: true }))
+    range.on('end', function (values, handle) {
+        minPrice.dispatchEvent(new Event('change', {bubbles: true}))
+        maxPrice.dispatchEvent(new Event('change', {bubbles: true}))
         //if(handle === 1){min.dispatchEvent(new Event('change',))}
 //if(handle === 1){max.dispatchEvent(new Event('change',))}
 
@@ -79,39 +79,39 @@ if(priceSlider) {
 //km slider
     const kmSlider = document.getElementById('kmSlider');
 
-    if(kmSlider){
-            const minKm = document.getElementById('search_form_minKm')
-            const maxKm = document.getElementById('search_form_maxKm')
-            //const kmPrefixFormat = wNumb({suffix: 'km', decimals: 0})
-            const range = noUiSlider.create(kmSlider, {
+    if (kmSlider) {
+        const minKm = document.getElementById('search_form_minKm')
+        const maxKm = document.getElementById('search_form_maxKm')
+        //const kmPrefixFormat = wNumb({suffix: 'km', decimals: 0})
+        const range = noUiSlider.create(kmSlider, {
             start: [1000, 350000 /*min.value || minValue, max.value || maxValue*/],
             connect: true,
             step: 3,
-            tooltips:true,
+            tooltips: true,
             range: {
                 'min': /*minValue, */1000,
                 'max': /*maxValue  */350000
             },
-             // if removed we get the values in the "search_form_km"
+            // if removed we get the values in the "search_form_km"
             /*format : wNumb({
                 decimals:0,
                 suffix:'Km'
             })*/
         });
 
-        range.on('slide', function(values, handle) {
+        range.on('slide', function (values, handle) {
             //console.log(values, handle);
-            if(handle === 0){
+            if (handle === 0) {
                 minKm.value = Math.round(values[0])
             }
-            if(handle === 1){
+            if (handle === 1) {
                 maxKm.value = Math.round(values[1])
             }
 
         })
-        range.on('end', function(values,handle){
-            minKm.dispatchEvent(new Event('change',{ bubbles: true }))
-            maxKm.dispatchEvent(new Event('change',{ bubbles: true }))
+        range.on('end', function (values, handle) {
+            minKm.dispatchEvent(new Event('change', {bubbles: true}))
+            maxKm.dispatchEvent(new Event('change', {bubbles: true}))
 
         })
 
@@ -120,7 +120,7 @@ if(priceSlider) {
 
 //Year slider
 
-    const yearSlider = document.getElementById('yearSlider');
+    /*const yearSlider = document.getElementById('yearSlider');
     function timestamp(str) {
         return new Date(str).getTime();
     }
@@ -131,20 +131,17 @@ if(priceSlider) {
         const range = noUiSlider.create(yearSlider, {
             // Two more timestamps indicate the handle starting positions.
             //start: [timestamp('2001-01-01'), timestamp('2024-12-30')],
-            start: [timestamp('2015-01-01'),timestamp('2024-12-30')],
+            start: [timestamp('2007-01-01'),timestamp('2024-12-30')],
             //start: [1266137081781,1704067200000],
             connect: true,
             //step: 7 * 24 * 60 * 60 * 1000,
             range: {
                 //min: timestamp('2001-01-01'),
                 //max: timestamp('2024-12-30')
-                min: timestamp('2015-01-01'),
+                min: timestamp('2007-01-01'),
                 max: timestamp('2024-12-30')
             },
-            /*range: {
-                min: 1266137081781,
-                max: 1704067200000
-            },*/
+
             format: wNumb({
                 decimals: 0
             }),
@@ -175,14 +172,55 @@ if(priceSlider) {
             minYear.dispatchEvent(new Event('change',{ bubbles: true }))
             maxYear.dispatchEvent(new Event('change',{ bubbles: true }))
             //if(handle === 1){min.dispatchEvent(new Event('change',))}
-//if(handle === 1){max.dispatchEvent(new Event('change',))}
-            //min.dispatchEvent(new Event('change',{ bubbles: true }))
-            //console.log('Event triggered')
-            //console.log('values, handle')
+
 
         })
 
     }
 
-}
+}*/
+    const yearSlider = document.getElementById('yearSlider');
 
+    if (yearSlider) {
+        const minYear = document.getElementById('search_form_minYear');
+        const maxYear = document.getElementById('search_form_maxYear');
+
+        noUiSlider.create(yearSlider, {
+            start: [parseInt(yearSlider.dataset.min), parseInt(yearSlider.dataset.max)],
+            connect: true,
+            step: 365 * 24 * 60 * 60 * 1000, // 1-year steps
+            range: {
+                min: parseInt(yearSlider.dataset.min),
+                max: parseInt(yearSlider.dataset.max)
+            },
+            tooltips: [
+                {
+                    to: (value) => new Date(value).getFullYear(),
+                    from: (value) => value
+                },
+                {
+                    to: (value) => new Date(value).getFullYear(),
+                    from: (value) => value
+                }
+            ],
+            format: wNumb({
+                decimals: 0 // Ensure no decimals in year output
+            })
+        });
+
+        // Update the form inputs on slider events
+        yearSlider.noUiSlider.on('update', function (values, handle) {
+            const year = new Date(+values[handle]).getFullYear();
+            if (handle === 0) {
+                minYear.value = year;
+            } else {
+                maxYear.value = year;
+            }
+        });
+
+        yearSlider.noUiSlider.on('end', function () {
+            minYear.dispatchEvent(new Event('change', {bubbles: true}));
+            maxYear.dispatchEvent(new Event('change', {bubbles: true}));
+        });
+    }
+}

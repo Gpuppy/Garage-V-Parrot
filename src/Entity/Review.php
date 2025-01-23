@@ -32,6 +32,9 @@ class Review
     #[ORM\Column]
     private bool $approved = false ;
 
+    #[ORM\Column(length: 11)]
+    private ?int $userId = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -94,6 +97,18 @@ class Review
     public function setApproved(bool $approved): static
     {
         $this->approved = $approved;
+
+        return $this;
+    }
+
+    public function getUserId() : ?int
+    {
+        return $this->userId;
+    }
+
+    public function setUserId(int $userId) : static
+    {
+        $this->userId = $userId;
 
         return $this;
     }

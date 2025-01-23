@@ -104,18 +104,18 @@ class SearchForm extends AbstractType
                 ]
             ])*/
 
-            ->add('minYear', NumberType::class, [
+            ->add('minYear', IntegerType::class, [
                 'label' => false,
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Année'
+                    'placeholder' => 'Year from'
                 ]
             ])
-            ->add('maxYear', NumberType::class, [
+            ->add('maxYear', IntegerType::class, [
                 'label' => false,
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Année'
+                    'placeholder' => 'Year to'
                 ]
             ])
 

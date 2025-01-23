@@ -25,7 +25,8 @@ class ReviewCrudController extends AbstractCrudController
             TextField::new('author'),
             TextField::new('title'),
             TextEditorField::new('content'),
-            BooleanField::new('approved')
+            BooleanField::new('approved'),
+            IdField::new('userId')
 
         ];
     }

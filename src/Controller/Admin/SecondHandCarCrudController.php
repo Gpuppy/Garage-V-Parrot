@@ -41,7 +41,8 @@ class SecondHandCarCrudController extends AbstractCrudController
             TextField::new('imageFile')->setFormType(VichImageType::class)->onlyWhenCreating(),
             ImageField::new('image')->setBasePath('images/uploads')->onlyOnIndex(),
             DateField::new('createdAt'),
-            DateField::new('updatedAt')
+            DateField::new('updatedAt'),
+            IdField::new('userId')
         ];
     }
 

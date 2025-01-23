@@ -34,10 +34,10 @@ class Contact
     #[MongoDB\Field(type: "bool")]
     private bool $processed = false;
 
-    /*public function __construct()
+    public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable();
-    }*/
+    }
 
 
     public function isProcessed(): ?bool
