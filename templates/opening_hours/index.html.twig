@@ -6,23 +6,24 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="row text left text-md-left container-fluid ">
+    <div class="container my-5">
+        <h1 class="text-center mb-4">Horaires d'ouverture</h1>
 
-
-    <div class="container text-center display-flex">
-        <div class="row mr-0">
-            <div class="col-3 ">
-                <h5 class="text-uppercase mb-3  ">Horaires</h5>
-
-   {% for OpeningHour in OpeningHours %}
-    <h3>{{ OpeningHour.dayOfWeek }}</h3>
-       {{ OpeningHour.timeOpen()|date('d-m-Y H:i:s') }}
-
-    {% endfor %}
-            </div>
+        <div class="row justify-content-center">
+            {% for OpeningHour in OpeningHours %}
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-uppercase">{{ OpeningHour.dayOfWeek }}</h5>
+                            <p class="card-text">
+                                <strong>Heure d'ouverture:</strong> {{ OpeningHour.timeOpen|date('H:i') }}<br>
+                                <strong>Heure de fermeture:</strong> {{ OpeningHour.timeClose|date('H:i') }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
-    </div>
-</div>
     </div>
 
 {% endblock %}

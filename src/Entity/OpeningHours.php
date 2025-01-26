@@ -5,6 +5,9 @@ namespace App\Entity;
 use App\Repository\OpeningHoursRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\User;
+use phpDocumentor\Reflection\Types\Integer;
+
 
 #[ORM\Entity(repositoryClass: OpeningHoursRepository::class)]
 class OpeningHours
@@ -21,8 +24,12 @@ class OpeningHours
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $timeClose = null;
 
-    #[ORM\Column]
-    private ?int $userId = null;
+    ##[ORM\OneToOne(mappedBy: 'user', targetEntity: User::class)]
+    ##[ORM\Column(length: 11)]
+   #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'openingHours')]
+   ##[ORM\Column(length: 11)]
+   #[ORM\JoinColumn(name: 'user_id', referencedColumnName: 'id', nullable: true, onDelete: 'CASCADE')]
+    private ?User $user = null;
 
     public function getId(): ?int
     {
@@ -62,16 +69,18 @@ class OpeningHours
         return $this;
     }
 
-    public function getUserId(): ?int
+    public function getUser(): ?User
     {
-        return $this->id;
+        return $this->user;
     }
 
-    public function setUserId(int $userId): self
+    public function setUser(?User $user): self
     {
-        $this->userId = $userId;
+        $this->user = $user;
 
         return $this;
     }
+
+
 
 }

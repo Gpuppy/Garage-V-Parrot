@@ -9,6 +9,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
@@ -34,6 +36,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
 
+    ##[ORM\OneToMany(inversedBy: 'User')]
+    ##[ORM\JoinColumn(nullable: false)]
+    #private ?OpeningHours $openingHours = null;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: OpeningHours::class, cascade: ['persist', 'remove'])]
+    private Collection $openingHours;
 
     public function getId(): ?int
     {
@@ -50,6 +58,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->email = $email;
 
         return $this;
+
+    }
+
+    //  __toString method
+    public function __toString(): string
+    {
+        return $this->email ?? 'User';
     }
 
     /**
@@ -130,5 +145,37 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     private function denyAccessUnlessGranted(string $string, $null, string $string1)
     {
+    }
+
+    public function __construct()
+    {
+        $this->openingHours = new ArrayCollection();
+    }
+
+    public function getOpeningHours(): Collection
+    {
+        return $this->openingHours;
+    }
+
+    public function addOpeningHour(OpeningHours $openingHour): self
+    {
+        if (!$this->openingHours->contains($openingHour)) {
+            $this->openingHours->add($openingHour);
+            $openingHour->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOpeningHour(OpeningHours $openingHour): self
+    {
+        if ($this->openingHours->removeElement($openingHour)) {
+            // Set the owning side to null (unless already changed)
+            if ($openingHour->getUser() === $this) {
+                $openingHour->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }

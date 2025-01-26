@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\OpeningHours;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
@@ -27,7 +28,11 @@ class OpeningHoursCrudController extends AbstractCrudController
             //TextEditorField::new('description'),
             TextField::new('dayOfWeek'),
             TimeField::new('timeOpen'),
-            TimeField::new('timeClose')
+            TimeField::new('timeClose'),
+            //TextField::new('userId')
+            AssociationField::new('user', 'User')
+                ->setCrudController(UserCrudController::class)
+                ->setRequired(false)
         ];
     }
 
