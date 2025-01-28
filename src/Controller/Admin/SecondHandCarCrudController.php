@@ -2,9 +2,6 @@
 
 namespace App\Controller\Admin;
 
-//use App\Document\User1; // Example MongoDB document
-//use App\Document\SecondHandCar; // Example MongoDB document
-//use Doctrine\ODM\MongoDB\DocumentManager;
 
 use App\Entity\SecondHandCar;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
@@ -34,6 +31,7 @@ class SecondHandCarCrudController extends AbstractCrudController
         return [
             TextField::new('name'),
             AssociationField::new('brand'),
+
             NumberField::new('km'),
             DateTimeField::new('year')->setFormat('yyyy-MM-dd'),
             MoneyField::new('price')->setCurrency('EUR'),
@@ -42,7 +40,12 @@ class SecondHandCarCrudController extends AbstractCrudController
             ImageField::new('image')->setBasePath('images/uploads')->onlyOnIndex(),
             DateField::new('createdAt'),
             DateField::new('updatedAt'),
-            IdField::new('userId')
+            AssociationField::new('user')
+            //IdField::new('user')
+            /*AssociationField::new('user', 'User')
+                ->setCrudController(UserCrudController::class)
+                ->setRequired(false)*/
+
         ];
     }
 

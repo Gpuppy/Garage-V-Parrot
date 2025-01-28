@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Review;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
@@ -26,7 +27,10 @@ class ReviewCrudController extends AbstractCrudController
             TextField::new('title'),
             TextEditorField::new('content'),
             BooleanField::new('approved'),
-            IdField::new('userId')
+            //IdField::new('user')
+            AssociationField::new('user', 'User')
+                ->setCrudController(UserCrudController::class)
+                ->setRequired(false)
 
         ];
     }

@@ -50,6 +50,11 @@ class SecondHandCar
     #[ORM\Column(type: Types::DATETIME_MUTABLE,nullable: true)]
     private ?\DateTimeInterface $updatedAt = null;
 
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'secondHandCars')]
+    ##[ORM\Column(length: 11)]
+    #[ORM\JoinColumn(name: 'user_id', referencedColumnName: 'id', nullable: true, onDelete: 'CASCADE')]
+    private ?User $user = null;
+
     public function __construct()
     {
 
@@ -194,6 +199,22 @@ class SecondHandCar
         $this->description = $description;
     }
 
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+
+    public function setUser(?User $user): void
+    {
+        $this->user = $user;
+    }
+
+    public function __toString() : string
+    {
+        return $this->name ?? 'Unnamed Car' ;
+    }
 }
 
 

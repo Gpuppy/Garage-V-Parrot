@@ -24,8 +24,6 @@ class OpeningHours
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $timeClose = null;
 
-    ##[ORM\OneToOne(mappedBy: 'user', targetEntity: User::class)]
-    ##[ORM\Column(length: 11)]
    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'openingHours')]
    ##[ORM\Column(length: 11)]
    #[ORM\JoinColumn(name: 'user_id', referencedColumnName: 'id', nullable: true, onDelete: 'CASCADE')]

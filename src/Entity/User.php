@@ -43,6 +43,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: OpeningHours::class, cascade: ['persist', 'remove'])]
     private Collection $openingHours;
 
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Review::class, cascade: ['persist', 'remove'])]
+    private Collection $reviews;
+
+    ##[ORM\Column(type: 'string')]
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: SecondHandCar::class, cascade: ['persist', 'remove'])]
+    ##[ORM\JoinColumn(nullable: false)]
+    private Collection $secondHandCars;
+
+    ##[ORM\OneToMany(mappedBy: 'brand', targetEntity: SecondHandCar::class)]
+    ##[ORM\JoinColumn(nullable: false)]
+    #private Collection $SecondHandCar;
     public function getId(): ?int
     {
         return $this->id;
@@ -60,6 +71,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
 
     }
+
+    public function getSecondHandCars(): Collection
+    {
+        return $this->secondHandCars;
+    }
+
 
     //  __toString method
     public function __toString(): string
@@ -150,6 +167,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function __construct()
     {
         $this->openingHours = new ArrayCollection();
+        $this->secondHandCars = new ArrayCollection();
     }
 
     public function getOpeningHours(): Collection
@@ -173,6 +191,56 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // Set the owning side to null (unless already changed)
             if ($openingHour->getUser() === $this) {
                 $openingHour->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+
+    public function getReviews(): Collection
+    {
+        return $this->openingHours;
+    }
+
+    public function addReview(Review $review): self
+    {
+        if (!$this->reviews->contains($review)) {
+            $this->reviews->add($review);
+            $review->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReview(Review $review): self
+    {
+        if ($this->reviews->removeElement($review)) {
+            // Set the owning side to null (unless already changed)
+            if ($review->getUser() === $this) {
+                $review->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function addSecondHandCar(SecondHandCar $secondHandCar): self
+    {
+        if (!$this->secondHandCars->contains($secondHandCar)) {
+            $this->secondHandCars->add($secondHandCar);
+            $secondHandCar->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSecondHandCar(SecondHandCar $secondHandCar): self
+    {
+        if ($this->secondHandCars->removeElement($secondHandCar)) {
+            // Set the owning side to null (unless already changed)
+            if ($secondHandCar->getUser() === $this) {
+                $secondHandCar->setUser(null);
             }
         }
 

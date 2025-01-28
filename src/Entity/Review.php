@@ -32,8 +32,11 @@ class Review
     #[ORM\Column]
     private bool $approved = false ;
 
-    #[ORM\Column(length: 11)]
-    private ?int $userId = null;
+    ##[ORM\Column(length: 11)]
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'reviews')]
+    ##[ORM\Column(length: 11)]
+    #[ORM\JoinColumn(name: 'user_id', referencedColumnName: 'id', nullable: true, onDelete: 'CASCADE')]
+    private ?User $user = null;
 
     public function getId(): ?int
     {
@@ -101,17 +104,19 @@ class Review
         return $this;
     }
 
-    public function getUserId() : ?int
+    public function getUser() : ?User
     {
-        return $this->userId;
+        return $this->user;
     }
 
-    public function setUserId(int $userId) : static
+    public function setUser(User $user) : self
     {
-        $this->userId = $userId;
+        $this->user = $user;
 
         return $this;
     }
+
+
 
 
 }
