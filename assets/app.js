@@ -38,7 +38,7 @@ if(priceSlider) {
     const maxPriceValue = Math.ceil(parseInt(priceSlider.dataset.max, 10) / 10) * 10
     const euroPrefixFormat = wNumb({prefix: '€', decimals: 0})
     const range = noUiSlider.create(priceSlider, {
-        start: [1000, 10000000 /*minPrice.value || minPriceValue, maxPrice.value || maxPriceValue*/],
+        start: [1000, 100000 /*minPrice.value || minPriceValue, maxPrice.value || maxPriceValue*/],
         connect: true,
         step: 3,
         //decimals: 3,
@@ -51,7 +51,7 @@ if(priceSlider) {
         },*/
         range: {
             'min': /*minValue, */1000,
-            'max': /*maxValue  */10000000
+            'max': /*maxValue  */100000
         },
 
     });
@@ -120,7 +120,7 @@ if(priceSlider) {
 
 //Year slider
 
-    /*const yearSlider = document.getElementById('yearSlider');
+    const yearSlider = document.getElementById('yearSlider');
     function timestamp(str) {
         return new Date(str).getTime();
     }
@@ -178,8 +178,8 @@ if(priceSlider) {
 
     }
 
-}*/
-    const yearSlider = document.getElementById('yearSlider');
+}
+    /*const yearSlider = document.getElementById('yearSlider');
 
     if (yearSlider) {
         const minYear = document.getElementById('search_form_minYear');
@@ -223,4 +223,4 @@ if(priceSlider) {
             maxYear.dispatchEvent(new Event('change', {bubbles: true}));
         });
     }
-}
+}*/

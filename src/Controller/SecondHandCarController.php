@@ -35,6 +35,9 @@ class SecondHandCarController extends AbstractController
     #[Route('/SecondHandCar', name: 'app_second_hand_car'/*, methods: ['GET']*/)]
     public function index(SecondHandCarRepository $secondHandCarRepository, Request $request) : Response
     {
+        //dump($request->query->all()); // Log all query parameters
+        //dump($request->request->all()); // Log form parameters
+        //die;
         $data = new SearchData();
         $data->page = $request->get('page', 1);
         $form = $this->createForm(SearchForm::class, $data);
