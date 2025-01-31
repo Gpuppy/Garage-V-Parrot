@@ -1,16 +1,16 @@
 /**
  *@property {HTMLElement} content
- *@property {HTMLElement} pagination
+ *//@property {HTMLElement} pagination
  *@property {HTMLFormElement} form
  */
-//property {HTMLElement} pagination
+//@property {HTMLElement} pagination
 //@property {HTMLElement} sorting
 export default class Filter {
     /**
-    *@param {HTMLElement | null}element
-    */
-    constructor (element){
-        if(element === null){
+     *@param {HTMLElement | null}element
+     */
+    constructor(element) {
+        if (element === null) {
             return
         }
         this.pagination = element.querySelector('.js-filter-pagination')
@@ -18,7 +18,7 @@ export default class Filter {
         //this.sorting = element.querySelector('.js-filter-sorting')
         this.form = element.querySelector('.js-filter-form')
         this.bindEvents()
-       //console.log('loading in progress')
+        //console.log('loading in progress')
     }
 
     /**
@@ -37,30 +37,51 @@ export default class Filter {
         })
     }
 
-         async loadForm() {
-         const data = new FormData(this.form)
-         const url = new URL(this.form.getAttribute('action') || window.location.href)
-         const params = new URLSearchParams()
-         data.forEach((value, key) => {
-             params.append(key, value)
-             })
-             //debugger
-             return this.loadUrl(url.pathname + '?' + params.toString())
+    async loadForm() {
+        const data = new FormData(this.form)
+        const url = new URL(this.form.getAttribute('action') || window.location.href)
+        const params = new URLSearchParams()
+        data.forEach((value, key) => {
+            params.append(key, value)
+        })
+        //debugger
+        return this.loadUrl(url.pathname + '?' + params.toString())
 
-         }
+    }
 
     async loadUrl(url) {
-      const ajaxUrl = url + '&ajax=1'//to stop content in json when doing back
-      const response = await fetch(ajaxUrl, {
-        //method: "POST",
-        headers: {
-            'X-Requested-With': 'XMLHttpRequest'
-        },
+        const ajaxUrl = url + '&ajax=1'//to stop content in json when doing back
+        const response = await fetch(ajaxUrl, {
+            //method: "POST",
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            },
 
-})
-        if(response.status >= 200 && response.status < 300) {
-          const data = await response.json()
-            this.content.innerHTML = data.content
+        })
+        if (response.status >= 200 && response.status < 300) {
+            const data = await response.json();
+            console.log("AJAX Response Data:", data); // Debugging
+
+            if (this.content) {
+                this.content.innerHTML = data.content;
+            } else {
+                console.warn("Content element (.js-filter-content) not found!");
+            }
+
+            if (this.pagination) {
+                this.pagination.innerHTML = data.pagination;
+            } else {
+                console.warn("Pagination element (.js-filter-pagination) not found!");
+            }
+
+            history.replaceState({}, '', url);
+        } else {
+            console.error("Fetch error:", response);
+        }
+    }
+}
+
+            /*this.content.innerHTML = data.content
             //this.sorting.innerHTML = data.sorting
             this.pagination.innerHTML = data.pagination
             history.replaceState({}, '', url)
@@ -69,4 +90,4 @@ export default class Filter {
 
         }
     }
-}
+}*/

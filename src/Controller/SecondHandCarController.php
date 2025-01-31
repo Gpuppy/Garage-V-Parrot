@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 
+use Knp\Component\Pager\PaginatorInterface;
 use App\Form\SearchForm;
 use App\Model\SearchData;
 use App\Repository\SecondHandCarRepository;
