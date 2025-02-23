@@ -1,6 +1,6 @@
 /**
  *@property {HTMLElement} content
- *//@property {HTMLElement} pagination
+ *@property {HTMLElement} pagination
  *@property {HTMLFormElement} form
  */
 //@property {HTMLElement} pagination
