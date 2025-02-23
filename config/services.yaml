@@ -22,26 +22,6 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
 
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
-
-    #Aws\S3\S3Client:
-        #arguments:
-            #-
-                #version: '2006-03-01' # or 'latest'
-                #region: "Europe (Stockholm) eu-north-1" # 'eu-central-1' for example
-                #credentials:
-                    #key: "%env(AWS_S3_ACCESS_ID)%"
-                    #secret: "%env(AWS_S3_ACCESS_SECRET)%"
-
-#cloudinary:
-    #url: cloudinary://my-key:my-secret@my-cloud
-    # The next configuration variables should be defined if they are not present in the URL
-    # The URL will take precedence
-    #cloud_name: hk9lz3ds6
-    #access_identifier:
-        #api_key: 529226164263241
-        #api_secret: bFMq5ZHMYBn6gqkck0sM_JOPMGQ
-    #options:
-        #secure: true
-
+    App\EventListener\ExceptionListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception, method: onKernelException }
