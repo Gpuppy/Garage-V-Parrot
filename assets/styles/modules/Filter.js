@@ -58,29 +58,18 @@ export default class Filter {
             },
 
         })
-        if (response.status >= 200 && response.status < 300) {
-            const data = await response.json();
-            console.log("AJAX Response Data:", data); // Debugging
-
-            if (this.content) {
-                this.content.innerHTML = data.content;
-            } else {
-                console.warn("Content element (.js-filter-content) not found!");
-            }
-
-            if (this.pagination) {
-                this.pagination.innerHTML = data.pagination;
-            } else {
-                console.warn("Pagination element (.js-filter-pagination) not found!");
-            }
-
-            history.replaceState({}, '', url);
+        if(response.status >= 200 && response.status < 300) {
+            const data = await response.json()
+            this.content.innerHTML = data.content
+            //this.sorting.innerHTML = data.sorting
+            this.pagination.innerHTML = data.pagination
+            history.replaceState({}, '', url)
         } else {
-            console.error("Fetch error:", response);
+            console.error(response)
+
         }
     }
 }
-
             /*this.content.innerHTML = data.content
             //this.sorting.innerHTML = data.sorting
             this.pagination.innerHTML = data.pagination
