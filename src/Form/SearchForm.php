@@ -108,14 +108,14 @@ class SearchForm extends AbstractType
                 'label' => false,
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Year from'
+                    'placeholder' => 'Année'
                 ]
             ])
             ->add('maxYear', NumberType::class, [
                 'label' => false,
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Year to'
+                    'placeholder' => 'Année'
                 ]
             ])
 
