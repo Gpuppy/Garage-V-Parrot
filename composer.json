@@ -13,6 +13,7 @@
         "ext-intl": "*",
         "aws/aws-sdk-php": "~3.0",
         "cloudinary/cloudinary_php": "^2",
+        "connectholland/cookie-consent-bundle": "^1.0",
         "doctrine/doctrine-bundle": "^2.10",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/mongodb-odm": "^2.9",

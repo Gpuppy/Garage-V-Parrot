@@ -13,6 +13,8 @@
         <link rel="stylesheet">
         <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
         <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.3/components/testimonials/testimonial-1/assets/css/testimonial-1.css" />
+        <link rel="stylesheet" href="{{ asset('bundles/chcookieconsent/css/cookie_consent.css') }}">
+
         <!--link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/-->
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
 
@@ -78,12 +80,35 @@
     </head>
     <body>
         {% block body %}
-            {# { render_esi(path('ch_cookie_consent.show')) } #}
-            {# { render_esi(path('ch_cookie_consent.show_if_cookie_consent_not_set')) } #}
+            {{ render_esi(path('ch_cookie_consent.show')) }}
+            {{ render_esi(path('ch_cookie_consent.show_if_cookie_consent_not_set')) }}
 
         {% endblock %}
+
+
+        {#  { render_esi(path('ch_cookie_consent.show_if_cookie_consent_not_set', { 'locale': app.request.locale })) }#}
+        {#  { render(controller('cookie_consent::banner')) }#}
+
+
+
+
+        {% include "@CHCookieConsent/cookie_consent_styling.html.twig" %}
+
+        <script src="{{ asset('bundles/chcookieconsent/js/cookie_consent.js') }}"></script>
+        <script>
+            document.addEventListener('cookie-consent-form-submit-successful', function (e) {
+                console.log('Consent given:', e.detail); // useful for debugging or custom behavior
+            });
+        </script>
+
+        {% include "cookie/cookie.html.twig" %}
+
+
     </body>
-        <!----footer----->
+
+
+
+    <!----footer----->
         <footer class="bg-dark text-white pt-5 pb-4 mt-0! mh-25 ">
 
             <!--div class = "timetable"-->

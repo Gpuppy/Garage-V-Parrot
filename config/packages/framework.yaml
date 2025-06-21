@@ -35,7 +35,7 @@ framework:
            # - '@mongo_client'
            # - { database: 'cluster0.mz4dm.mongodb.net.User1', collection: 'sessions' }
 
-    #esi: true
+    esi: true
     #fragments: true
     #php_errors:
         #log: true
