@@ -3,7 +3,8 @@
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
-#parameters:
+parameters:
+    .container.dumper.inline_factories: true
     #secondhandcars_images: /uploads/images
     #uploads_base_url: 'https://s3.amazonaws.com/%env%'
     #uploads_base_url: 'https://s3.amazonaws.com/%env(vparrot-aws)%'
