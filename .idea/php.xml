@@ -171,15 +171,17 @@
       <path value="$PROJECT_DIR$/vendor/cloudinary/cloudinary_php" />
       <path value="$PROJECT_DIR$/vendor/cloudinary/transformation-builder-sdk" />
       <path value="$PROJECT_DIR$/vendor/symfony/ux-toggle-password" />
-      <path value="$PROJECT_DIR$/vendor/jean85/pretty-package-versions" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-apcu" />
+      <path value="$PROJECT_DIR$/vendor/twig/html-extra" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php84" />
+      <path value="$PROJECT_DIR$/vendor/symfony/ux-twig-component" />
       <path value="$PROJECT_DIR$/vendor/mongodb/mongodb" />
-      <path value="$PROJECT_DIR$/vendor/doctrine/mongodb-odm-bundle" />
-      <path value="$PROJECT_DIR$/vendor/doctrine/mongodb-odm" />
-      <path value="$PROJECT_DIR$/vendor/friendsofphp/proxy-manager-lts" />
       <path value="$PROJECT_DIR$/vendor/laminas/laminas-code" />
-      <path value="$PROJECT_DIR$/vendor/symfony/templating" />
-      <path value="$PROJECT_DIR$/vendor/doctrine/annotations" />
-      <path value="$PROJECT_DIR$/vendor/connectholland/cookie-consent-bundle" />
+      <path value="$PROJECT_DIR$/vendor/jean85/pretty-package-versions" />
+      <path value="$PROJECT_DIR$/vendor/friendsofphp/proxy-manager-lts" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/mongodb-odm" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/mongodb-odm-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php85" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.1" />

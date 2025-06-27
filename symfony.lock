@@ -1,26 +1,4 @@
 {
-    "connectholland/cookie-consent-bundle": {
-        "version": "1.0",
-        "recipe": {
-            "repo": "github.com/symfony/recipes-contrib",
-            "branch": "main",
-            "version": "0.4",
-            "ref": "9725d24dc996a1041f25b9e29fc1567a861f98e4"
-        },
-        "files": [
-            "./config/packages/ch_cookie_consent.yaml",
-            "./config/routes/ch_cookie_consent.yaml"
-        ]
-    },
-    "doctrine/annotations": {
-        "version": "2.0",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "main",
-            "version": "1.10",
-            "ref": "64d8583af5ea57b7afa4aba4b159907f3a148b05"
-        }
-    },
     "doctrine/deprecations": {
         "version": "1.1",
         "recipe": {
@@ -336,6 +314,18 @@
     },
     "symfony/ux-toggle-password": {
         "version": "v2.17.0"
+    },
+    "symfony/ux-twig-component": {
+        "version": "2.26",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "2.13",
+            "ref": "9b627037a510e20eddb559e06050a34854ce51d6"
+        },
+        "files": [
+            "./config/packages/twig_component.yaml"
+        ]
     },
     "symfony/validator": {
         "version": "6.1",

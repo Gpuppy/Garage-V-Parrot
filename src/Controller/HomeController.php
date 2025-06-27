@@ -39,37 +39,5 @@ class HomeController extends AbstractController
         ]);
     }
 
-    ##[Route('/reviews', name: 'event_show')]
-    #public function show(/*Review $review,EntityManagerInterface $manager*/ ) : Response
-    /*{
-        $reviews = $this->entityManager->getRepository(Review::class)->findAll();
-        return $this->render('review/reviews.html.twig', [
-            'reviews' => $reviews
-        ]);
-    }*/
 
-    /*public function show(Request $request, EntityManagerInterface $manager) : Response
-    {
-        $review = new Review();
-        $form = $this->createForm(ReviewType::class, $review );
-        $form->handleRequest($request);
-
-        if($form->isSubmitted() && $form->isValid()){
-            $review = $form->getData();
-            //$reviewService->persistReview($review, null);
-
-            $manager->persist($review);
-            $manager->flush();
-
-
-            $this->addFlash('success', 'Votre avis nous a bien été envoyé merci! :) ');
-
-            return $this->redirectToRoute('app_home');
-        }
-
-        return $this->render('home/index.html.twig',[
-            //'home' => $home,
-            'form' => $form->createView(),
-        ]);
-    }*/
 }

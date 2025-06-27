@@ -167,15 +167,17 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/cloudinary/cloudinary_php" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/cloudinary/transformation-builder-sdk" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/ux-toggle-password" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/jean85/pretty-package-versions" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-apcu" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/twig/html-extra" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-php84" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/ux-twig-component" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/mongodb/mongodb" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/mongodb-odm-bundle" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/mongodb-odm" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/friendsofphp/proxy-manager-lts" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laminas/laminas-code" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/templating" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/annotations" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/connectholland/cookie-consent-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/jean85/pretty-package-versions" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/friendsofphp/proxy-manager-lts" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/mongodb-odm" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/mongodb-odm-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-php85" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
