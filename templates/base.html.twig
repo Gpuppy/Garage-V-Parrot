@@ -80,15 +80,15 @@
     </head>
     <body>
         {% block body %}
-            {{ render_esi(path('ch_cookie_consent.show')) }}
-            {{ render_esi(path('ch_cookie_consent.show_if_cookie_consent_not_set')) }}
+            {# { render_esi(path('ch_cookie_consent.show')) }} #}
+            {# { render_esi(path('ch_cookie_consent.show_if_cookie_consent_not_set')) }} #}
 
         {% endblock %}
 
 
 
 
-        {% include "@CHCookieConsent/cookie_consent_styling.html.twig" %}
+        {# % include "@CHCookieConsent/cookie_consent_styling.html.twig" %} #}
 
         <script src="{{ asset('bundles/chcookieconsent/js/cookie_consent.js') }}"></script>
         <script>
